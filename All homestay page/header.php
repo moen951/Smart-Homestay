@@ -176,7 +176,7 @@ $(document).ready(function()
         <li><a href="index.php">Home </a></li>
         <li><a href="rooms-tariff.php">Rooms & Tariff</a></li>        
         <li><a href="introduction.php">Introduction</a></li>
-        <li><button class= "button" onclick="document.getElementById('id01').style.display='block'">Login</button></li>
+        <li><button class= "button-login" onclick="document.getElementById('id01').style.display='block'">Login</button></li>
         <li><a href="contact.php">Contact</a></li>
       </ul>
     </div><!-- Wnavbar-collapse -->

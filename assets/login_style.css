@@ -9,14 +9,21 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
-.button-login{background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
+.button-login{
+    background-color: #eeeeee;
+    
+    margin: 0;
+    font-size: 1em;
+    line-height: 4.26em;
+    padding: 10px 0 10px 30px;
     border: none;
     cursor: pointer;
-    width: auto;}
 
+    }
+.button-login:hover
+{
+    color: #756534;
+}
 
  .button  {
     background-color: #4CAF50;
