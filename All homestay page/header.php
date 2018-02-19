@@ -1,3 +1,37 @@
+<?php 
+/*session_start();
+include 'dbconnection.php';
+
+
+$username = $_GET['username'];
+$pword = $_GET['pword'];
+
+$result =mysqli_query ($conn,'SELECT * FROM users WHERE username="'.$username.'" AND pword="'.$pword.'" ');
+
+$row=mysqli_fetch_array($result);
+
+if ($row['userid'] == $userid){
+  
+    if ($row['role'] == 1)
+  {
+    $_SESSION['userIC'] = $row['userIC'];
+    header("Location:admin_page.php");
+    }
+    else
+  {
+    $_SESSION['userIC'] = $row['userIC'];
+    header("Location:index.php");
+  } 
+
+}
+else{
+
+echo'<script> window.alert("login error!!");</script>';
+header("refresh:0 url=index.php");
+  
+  } */
+   ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +67,7 @@
 <link rel="icon" href="../images/home.png" type="image/x-icon">
 
 <link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/login_style.css">
 
 
 <link href="../fullcalendar.min.css" rel="stylesheet" />
@@ -103,6 +138,7 @@ $(document).ready(function()
     margin: 0 auto;
   }
 
+
 </style>
 
 </head>
@@ -140,13 +176,15 @@ $(document).ready(function()
         <li><a href="index.php">Home </a></li>
         <li><a href="rooms-tariff.php">Rooms & Tariff</a></li>        
         <li><a href="introduction.php">Introduction</a></li>
-        <li><a href="gallery.php">Gallery</a></li>
+        <li><button class= "button" onclick="document.getElementById('id01').style.display='block'">Login</button></li>
         <li><a href="contact.php">Contact</a></li>
       </ul>
     </div><!-- Wnavbar-collapse -->
   </div><!-- container-fluid -->
 </nav>
 <!-- header -->
+
+
 
 <div id='calendar'></div>
 
