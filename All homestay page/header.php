@@ -1,36 +1,11 @@
-<?php 
-/*session_start();
-include 'dbconnection.php';
+<?php
 
-
-$username = $_GET['username'];
-$pword = $_GET['pword'];
-
-$result =mysqli_query ($conn,'SELECT * FROM users WHERE username="'.$username.'" AND pword="'.$pword.'" ');
-
-$row=mysqli_fetch_array($result);
-
-if ($row['userid'] == $userid){
+if(!isset($_SESSION))
+ {
+  session_start();
+ } 
   
-    if ($row['role'] == 1)
-  {
-    $_SESSION['userIC'] = $row['userIC'];
-    header("Location:admin_page.php");
-    }
-    else
-  {
-    $_SESSION['userIC'] = $row['userIC'];
-    header("Location:index.php");
-  } 
-
-}
-else{
-
-echo'<script> window.alert("login error!!");</script>';
-header("refresh:0 url=index.php");
-  
-  } */
-   ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -176,13 +151,32 @@ $(document).ready(function()
         <li><a href="index.php">Home </a></li>
         <li><a href="rooms-tariff.php">Rooms & Tariff</a></li>        
         <li><a href="introduction.php">Introduction</a></li>
-        <li><button class= "button-login" onclick="document.getElementById('id01').style.display='block'">Login</button></li>
+        
+           <?php
+                 if(isset($_SESSION['userIC']))
+                 {
+                 ?> 
+                   <li><a href="logout.inc.php">Logout</a></li>
+                  
+                 <?php
+                 }
+
+                 
+    
+                  else{
+                    ?> <li><button class= "button-login" onclick="document.getElementById('id01').style.display='block'">Login</button></li> <?php
+                   }
+                ?>
+        
         <li><a href="contact.php">Contact</a></li>
       </ul>
     </div><!-- Wnavbar-collapse -->
   </div><!-- container-fluid -->
 </nav>
 <!-- header -->
+
+
+
 
 
 

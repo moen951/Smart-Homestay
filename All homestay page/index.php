@@ -1,6 +1,15 @@
 
 <?php include 'header.php';?>
 
+<?php
+  if(isset($_SESSION['userIC'])){ 
+    
+   
+      echo $_SESSION['userIC'];
+  
+      } 
+?>
+
 
 
 <!-- The Modal -->
@@ -9,7 +18,7 @@
 class="close" title="Close">&times;</span>
 
   <!-- Modal Content -->
-  <form class="modal-content animate" action="header.php" method="GET">
+  <form class="modal-content animate" action="login.inc.php" method="GET">
    
 
     <div class="container">
@@ -20,9 +29,7 @@ class="close" title="Close">&times;</span>
       <input type="password" placeholder="Enter Password" name="pword" required>
 
       <button class= "button" type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+      
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
@@ -46,6 +53,7 @@ window.onclick = function(event) {
 
 
 
+  
 	
 
 
