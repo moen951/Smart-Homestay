@@ -161,10 +161,12 @@ $(document).ready(function()
                  <?php
                  }
 
-                 
-    
                   else{
-                    ?> <li><button class= "button-login" onclick="document.getElementById('id01').style.display='block'">Login</button></li> <?php
+                    ?> <li><button class= "button-login" onclick="document.getElementById('id01').style.display='block'">Login</button></li> 
+
+                    <li><button class= "button-signup" onclick="document.getElementById('id02').style.display='block'" >Sign Up</button></li>
+
+                    <?php
                    }
                 ?>
         
