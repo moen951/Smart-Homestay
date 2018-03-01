@@ -70,7 +70,7 @@ $(document).ready(function()
         header: {
         left: "prev,next today",
         center: "title",
-        right: 'month,basicDay'
+       
         
         },
       defaultDate: "2018-02-10",

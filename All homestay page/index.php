@@ -70,8 +70,8 @@ window.onclick = function(event) {
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
 
-      <label for="psw2"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw2" required>
+      <label for="psw2"><b>Re-Enter Password</b></label>
+      <input type="password" placeholder="Re-Enter Password" name="psw2" required>
 
       
       <label for="email"><b>Email</b></label>
