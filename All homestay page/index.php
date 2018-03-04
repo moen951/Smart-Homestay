@@ -1,6 +1,8 @@
 
 <?php include 'header.php';?>
 
+<div id='calendar'></div>
+
 <?php
   if(isset($_SESSION['userIC'])){ 
     
@@ -9,7 +11,6 @@
   
       } 
 ?>
-
 
 
 <!-- The Modal -->
@@ -99,10 +100,6 @@ var modal = document.getElementById('id02');
 
 </script>
 
-
-
-  
-	
 
 
 

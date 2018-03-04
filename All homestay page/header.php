@@ -47,11 +47,34 @@ if(!isset($_SESSION))
 
 <link href="../fullcalendar.min.css" rel="stylesheet" />
 
+<style>
+
+  /*
+  body {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    font-size: 14px;
+  }
+  */
+
+  #calendar {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+
+</style>
+
 <script src="../lib/moment.min.js"></script>
 <script src="../lib/jquery.min.js"></script>
 <script src="../lib/jquery-ui.min.js"></script>
 <script src="../fullcalendar.min.js"></script>
+
+<!--
+
 <script src='../gcal.min.js'></script>
+-->
 
 <script>
 $(document).ready(function() 
@@ -66,24 +89,20 @@ $(document).ready(function()
 
         googleCalendarApiKey: 'AIzaSyAR9u_JmIPARI03Ove5Rk6ssvLmJYi6ODI',
 
-
-
-         events2:'en.malaysia#holiday@group.v.calendar.google.com',
         header: {
         right: "prev,next today",
-       
        
         
         },
       
       weekNumbers: true,
       navLinks: true, 
-      editable: false,
+     
       weekmode:'liquid',
-      eventLimit: true,
+      
        events: 'load.php',
-    selectable:true,
-    selectHelper:true,
+      selectable:true,
+      selectHelper:true,
 
      eventClick: function(event) {
         // opens events in a popup window
@@ -97,7 +116,7 @@ $(document).ready(function()
 
     select: function(start, end, allDay)
     {
-     var title = prompt("Enter Event Title");
+     var title = prompt("Enter Identity Card Number(NRIC) To Make A Reservation");
      if(title)
      {
       var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
@@ -128,7 +147,7 @@ $(document).ready(function()
       success:function(){
        
        calendar.fullCalendar('refetchEvents');
-       alert('Event Update');
+       alert('Reservation Update');
       }
      })
     },
@@ -146,7 +165,7 @@ $(document).ready(function()
       success:function()
       { 
        calendar.fullCalendar('refetchEvents');
-       alert("Event Updated");
+       alert("Reservation Updated");
       }
      });
     },
@@ -163,7 +182,7 @@ $(document).ready(function()
        success:function()
        {
         calendar.fullCalendar('refetchEvents');
-        alert("Event Removed");
+        alert("Reservation Removed");
        }
       })
      }
@@ -178,24 +197,7 @@ $(document).ready(function()
 
 </script>
 
-<style>
 
-  /*
-  body {
-    margin: 40px 10px;
-    padding: 0;
-    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-    font-size: 14px;
-  }
-  */
-
-  #calendar {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-
-</style>
 
 </head>
 
@@ -263,6 +265,6 @@ $(document).ready(function()
 
 
 
-<div id='calendar'></div>
+
 
   
