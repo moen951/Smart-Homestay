@@ -108,6 +108,9 @@ var modal = document.getElementById('id02');
 <div class="col-sm-5 col-md-4">
 <h3>Reservation</h3>
     <form role="form" class="wowload fadeInRight">
+      <div class="form-group">
+            <input type="text" class="form-control"  placeholder="Identity Card Number(NRIC)">
+        </div>
         <div class="form-group">
             <input type="text" class="form-control"  placeholder="Name">
         </div>
