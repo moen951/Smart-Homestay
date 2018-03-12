@@ -20,7 +20,7 @@ if ($psw==$psw2)
    								 alert('Signup Successfully, Please Login Again');
 									
 									</script>";
-					}
+}
 
 else
 {

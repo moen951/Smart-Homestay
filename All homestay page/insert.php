@@ -2,24 +2,36 @@
 
 //insert.php
 
-$connect = new PDO('mysql:host=localhost;dbname=homestay', 'root', '');
+include 'dbconnection.php';
+$guestIC = $_GET['userIC'];
+$username = $_GET['username'];
+$email = $_GET['email'];
+$phoneNum = $_GET['phoneNum'];
+$num_of_person= $_GET['num_of_person'];
+$startDate= $_GET['startDate'];
+$endDate= $_GET['endDate'];
+$userIC=0;
 
-if(isset($_POST["title"]))
-{
- $query = "
- INSERT INTO events 
- (title, start_event, end_event) 
- VALUES (:title, :start_event, :end_event)
- ";
- $statement = $connect->prepare($query);
- $statement->execute(
-  array(
-   ':title'  => $_POST['title'],
-   ':start_event' => $_POST['start'],
-   ':end_event' => $_POST['end']
-  )
- );
-}
+
+
+
+	$sql ="INSERT INTO guests (guestIC, username, phoneNum, email) 
+	VALUES ('$guestIC', '$username', '$phoneNum', '$email')";
+	$result = $conn->query($sql);
+
+
+	$sql2 ="INSERT INTO booking (guestIC, userIC, startDate, endDate, num_of_person) 
+	VALUES ('$guestIC', '$userIC', '$startDate', '$endDate', '$num_of_person')";
+	$result2 = $conn->query($sql2);
+
+	/*header("refresh:0 url=index.php");
+						echo "<script>
+								
+   								 alert('Signup Successfully, Please Login Again');
+									
+									</script>";
+									*/
+
 
 
 ?>

@@ -15,8 +15,7 @@
 
 <!-- The Modal -->
 <div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" 
-class="close" title="Close">&times;</span>
+<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
   <!-- Modal Content -->
   <form class="modal-content animate" action="login.inc.php" method="GET">
@@ -107,18 +106,18 @@ var modal = document.getElementById('id02');
 
 <div class="col-sm-5 col-md-4">
 <h3>Reservation</h3>
-    <form role="form" class="wowload fadeInRight">
+    <form role="form" class="wowload fadeInRight" action= "insert.php" method="GET" >
       <div class="form-group">
-            <input type="text" class="form-control"  placeholder="Identity Card Number(NRIC)">
+            <input type="text" class="form-control"  placeholder="Identity Card Number(NRIC)" name="guestIC">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control"  placeholder="Name">
+            <input type="text" class="form-control"  placeholder="Name" name="username">
         </div>
         <div class="form-group">
-            <input type="email" class="form-control"  placeholder="Email">
+            <input type="email" class="form-control"  placeholder="Email" name="email">
         </div>
         <div class="form-group">
-            <input type="Phone" class="form-control"  placeholder="Phone">
+            <input type="Phone" class="form-control"  placeholder="Phone" name="phoneNum">
         </div>        
         <div class="form-group">
             <div class="row">
@@ -132,8 +131,9 @@ var modal = document.getElementById('id02');
             </select>
             </div>        
             <div class="col-xs-6">
-            <select class="form-control">
+            <select class="form-control" name="num_of_person">
               <option>No. of Adult</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
@@ -143,61 +143,24 @@ var modal = document.getElementById('id02');
         </div>
         <div class="form-group">
             <div class="row">
-            <div class="col-xs-4">
-              <select class="form-control col-sm-2" name="expiry-month" id="expiry-month">
-                <option>Date</option>
-                <option value="01">1</option>
-                <option value="02">2</option>
-                <option value="03">Mar (03)</option>
-                <option value="04">Apr (04)</option>
-                <option value="05">May (05)</option>
-                <option value="06">June (06)</option>
-                <option value="07">July (07)</option>
-                <option value="08">Aug (08)</option>
-                <option value="09">Sep (09)</option>
-                <option value="10">Oct (10)</option>
-                <option value="11">Nov (11)</option>
-                <option value="12">Dec (12)</option>
-              </select>
+              <div class="col-xs-4">
+                <b>Start Date</b>
+              <input type='date' name='startDate' style='width: 150px; height: 30px'>
+              <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('startDate')[0].setAttribute('min', today);</script>
             </div>
+           
             <div class="col-xs-4">
-              <select class="form-control col-sm-2" name="expiry-month" id="expiry-month">
-                <option>Month</option>
-                <option value="01">Jan (01)</option>
-                <option value="02">Feb (02)</option>
-                <option value="03">Mar (03)</option>
-                <option value="04">Apr (04)</option>
-                <option value="05">May (05)</option>
-                <option value="06">June (06)</option>
-                <option value="07">July (07)</option>
-                <option value="08">Aug (08)</option>
-                <option value="09">Sep (09)</option>
-                <option value="10">Oct (10)</option>
-                <option value="11">Nov (11)</option>
-                <option value="12">Dec (12)</option>
-              </select>
+               <b>End Date</b>
+              <input type='date' name='endDate' style='width: 150px; height: 30px'>
+              <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('endDate')[0].setAttribute('min', today);</script>
             </div>
-            <div class="col-xs-4">
-              <select class="form-control" name="expiry-year">
-                <option value="13">2013</option>
-                <option value="14">2014</option>
-                <option value="15">2015</option>
-                <option value="16">2016</option>
-                <option value="17">2017</option>
-                <option value="18">2018</option>
-                <option value="19">2019</option>
-                <option value="20">2020</option>
-                <option value="21">2021</option>
-                <option value="22">2022</option>
-                <option value="23">2023</option>
-              </select>
-            </div>
+           
           </div>
         </div>
         <div class="form-group">
             <textarea class="form-control"  placeholder="Message" rows="4"></textarea>
         </div>
-        <button class="btn btn-default">Submit</button>
+        <button class="btn btn-default" name="booking">Submit</button>
     </form>    
 </div>
 </div>  
