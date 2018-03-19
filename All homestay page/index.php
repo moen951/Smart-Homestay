@@ -145,13 +145,13 @@ var modal = document.getElementById('id02');
             <div class="row">
               <div class="col-xs-4">
                 <b>Start Date</b>
-              <input type='date' name='startDate' style='width: 150px; height: 30px'>
+              <input type='date' name='startDate' style='width: 145px; height: 30px'>
               <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('startDate')[0].setAttribute('min', today);</script>
             </div>
-           
+           <b>    </b><b>     </b>
             <div class="col-xs-4">
                <b>End Date</b>
-              <input type='date' name='endDate' style='width: 150px; height: 30px'>
+              <input type='date' name='endDate' style='width: 145px; height: 30px'>
               <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('endDate')[0].setAttribute('min', today);</script>
             </div>
            
@@ -160,7 +160,7 @@ var modal = document.getElementById('id02');
         <div class="form-group">
             <textarea class="form-control"  placeholder="Message" rows="4"></textarea>
         </div>
-        <button class="btn btn-default" name="booking">Submit</button>
+        <button class="btn btn-default" >Submit</button>
     </form>    
 </div>
 </div>  

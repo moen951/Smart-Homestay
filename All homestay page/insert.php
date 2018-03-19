@@ -3,7 +3,7 @@
 //insert.php
 
 include 'dbconnection.php';
-$guestIC = $_GET['userIC'];
+$guestIC = $_GET['guestIC'];
 $username = $_GET['username'];
 $email = $_GET['email'];
 $phoneNum = $_GET['phoneNum'];
@@ -20,8 +20,8 @@ $userIC=0;
 	$result = $conn->query($sql);
 
 
-	$sql2 ="INSERT INTO booking (guestIC, userIC, startDate, endDate, num_of_person) 
-	VALUES ('$guestIC', '$userIC', '$startDate', '$endDate', '$num_of_person')";
+	$sql2 ="INSERT INTO booking (guestIC, startDate, endDate, num_of_person) 
+	VALUES ('$guestIC', '$startDate', '$endDate', '$num_of_person')";
 	$result2 = $conn->query($sql2);
 
 	/*header("refresh:0 url=index.php");
