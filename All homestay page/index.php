@@ -55,6 +55,8 @@ window.onclick = function(event) {
 
 <div id="id02" class="modal">
   <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+  
   <form class="modal-content animate" action="signup.inc.php" method="GET">
     <div class="container">
       <h1>Sign Up</h1>
