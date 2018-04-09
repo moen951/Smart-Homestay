@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Dynamic Dropdown</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <p>Please select your region and state:</p>
+    <select id="region">
+        <option id="please_select">-- Select Region --</option>
+        <option id="wm">West Malaysia</option>
+        <option id="em">East Malaysia</option>
+    </select>
+    <select id="state"></select>
+    <br/>
+    <br/>
+    <button id="showResult">Show Result</button>
+    <br/>
+    <br/>
+    <div id="result"></div>
+
+    <script type="text/javascript">
+    // Launch this when file was fully loaded
+    $(document).ready(function() {
+        // Hide states dropdown
+        $("#state,#showResult").hide();
+        // Put all West Malaysia states in a variable
+        var wmStates = "<option>Perlis</option><option>Kedah</option><option>Perak</option><option>Pulau Pinang</option><option>Selangor</option><option>Melaka</option><option>Negeri Sembilan</option><option>Johor</option><option>Pahang</option><option>Terengganu</option><option>Kelantan</option>";
+        // Put all East Malaysia states in a variable
+        var emStates = "<option>Sarawak</option><option>WP Labuan</option><option>Sabah</option>";
+        // Listen to #region dropdown change
+        $("#region").change(function() {
+            // Get the selected value
+            var selected = $(this).val();
+            // Show states dropdown
+            $("#state,#showResult").show();
+            // If West Malaysia selected, show West Malaysia states
+            if (selected == 'West Malaysia') {
+                // Show dropdown set for West Malaysia
+                $("#state").html(wmStates);
+            }
+            // If East Malaysia selected, show East Malaysia states
+            else if (selected == 'East Malaysia') {
+                // Show dropdown set for East Malaysia
+                $("#state").html(emStates);
+            }
+            // If -- Region -- is selected
+            else if (selected == '-- Select Region --') {
+                // Hide #states, button & #result
+                $("#state,#showResult,#result").hide();
+                // Ask user to select a region
+                alert('Please select your region');
+            }
+        });
+        // Listen to button click
+        $("#showResult").click(function() {
+            // Get selected value and put in variables
+            var regionSelected = $("#region").val();
+            var stateSelected = $("#state").val();
+            // Put the variables inside the #result div
+            $("#result").html("Region: " + regionSelected + "<br/>State: " + stateSelected);
+        });
+    });
+    </script>
+</body>
+
+</html>

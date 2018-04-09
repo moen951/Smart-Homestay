@@ -1,5 +1,45 @@
 <?php include 'header.php';?>
 
+ <script type="text/javascript">
+    // Launch this when file was fully loaded
+    $(document).ready(function() {
+        // Hide states dropdown
+        $("#state,#showResult").hide();
+        // Put all West Malaysia states in a variable
+        var wmStates = "<option>Perlis</option><option>Kedah</option><option>Perak</option><option>Pulau Pinang</option><option>Selangor</option><option>Melaka</option><option>Negeri Sembilan</option><option>Johor</option><option>Pahang</option><option>Terengganu</option><option>Kelantan</option>";
+        // Put all East Malaysia states in a variable
+        var emStates = "<option>Sarawak</option><option>WP Labuan</option><option>Sabah</option>";
+        // Listen to #region dropdown change
+        $("#region").change(function() {
+            // Get the selected value
+            var selected = $(this).val();
+            // Show states dropdown
+            $("#state,#showResult").show();
+            // If West Malaysia selected, show West Malaysia states
+            if (selected == 'West Malaysia') {
+                // Show dropdown set for West Malaysia
+                $("#state").html(wmStates);
+            }
+            // If East Malaysia selected, show East Malaysia states
+            else if (selected == 'East Malaysia') {
+                // Show dropdown set for East Malaysia
+                $("#state").html(emStates);
+            }
+            // If -- Region -- is selected
+            else if (selected == '-- Select Region --') {
+                // Hide #states, button & #result
+                $("#state,#showResult,#result").hide();
+                // Ask user to select a region
+                alert('Please select your region');
+            }
+        });
+        // Listen to button click
+        
+    });
+    </script>
+
+
+
 
 <div id="information" class="spacer reserve-info ">
 <div class="container">
@@ -12,7 +52,7 @@
             <div class="row">
                    
             <div class="col-xs-6">
-            <select class="form-control" name="tile">
+            <select class="form-control" name="title">
               <option>Title</option>
               <option>Mr.</option>
               <option>Mrs.</option>
@@ -21,13 +61,34 @@
             </div></div>
         </div>
       <div class="form-group">
-            <input type="text" class="form-control"  placeholder="Identity Card Number(NRIC)" name="guestIC">
+            <input type="text" class="form-control"  placeholder="Identity Card Number(NRIC) " name="guestIC">
         </div>
         <div class="form-group">
             <input type="text" class="form-control"  placeholder="First Name" name="firstName">
         </div>
         <div class="form-group">
             <input type="text" class="form-control"  placeholder="Last Name" name="lastName">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control"  placeholder="Address" name="address">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control"  placeholder="Postcode" name="postcode">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control"  placeholder="City" name="city">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                   
+            <div class="col-xs-6">
+            <select class="form-control" name="state">
+              <option id="please_select">Select Region</option>
+             <option id="wm">West Malaysia</option>
+             <option id="em">East Malaysia</option>
+            </select>
+            <select id="state"></select>
+            </div></div>
         </div>
         <div class="form-group">
             <input type="email" class="form-control"  placeholder="Email" name="email">
