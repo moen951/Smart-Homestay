@@ -14,7 +14,7 @@ $row=mysqli_fetch_array($result);
 
 
 
-if($row['password'] == $pword_hash)
+if($row['pword'] == $pword_hash)
 {
     if ($row['username'] == $username){
       
@@ -33,7 +33,7 @@ if($row['password'] == $pword_hash)
 
 }else {
   echo'<script> window.alert("Your username or password are incorrect!");</script>';
-  header("refresh:0 url=index.php");
+  //header("refresh:0 url=index.php");
 }
 
 

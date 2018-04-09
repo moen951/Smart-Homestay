@@ -9,10 +9,25 @@
 <h3>Reservation</h3>
     <form role="form" class="wowload fadeInRight" action= "insert.php" method="GET" >
       <div class="form-group">
+            <div class="row">
+                   
+            <div class="col-xs-6">
+            <select class="form-control" name="tile">
+              <option>Title</option>
+              <option>Mr.</option>
+              <option>Mrs.</option>
+              <option>Ms.</option>
+            </select>
+            </div></div>
+        </div>
+      <div class="form-group">
             <input type="text" class="form-control"  placeholder="Identity Card Number(NRIC)" name="guestIC">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control"  placeholder="Name" name="username">
+            <input type="text" class="form-control"  placeholder="First Name" name="firstName">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control"  placeholder="Last Name" name="lastName">
         </div>
         <div class="form-group">
             <input type="email" class="form-control"  placeholder="Email" name="email">
@@ -22,15 +37,7 @@
         </div>        
         <div class="form-group">
             <div class="row">
-            <div class="col-xs-6">
-            <select class="form-control">
-              <option>No. of Rooms</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-            </div>        
+                  
             <div class="col-xs-6">
             <select class="form-control" name="num_of_person">
               <option>No. of Adult</option>
