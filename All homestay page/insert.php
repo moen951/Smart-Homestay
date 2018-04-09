@@ -32,18 +32,7 @@ $endDate= $_GET['endDate'];
 	$result2 = $conn->query($sql2);
 
 
-	echo $guestIC; 
-	echo $firstName ;
-	echo $lastName; 
-	echo $address;
-	echo $postcode ;
-	echo $city ;
-	echo $state;
-	echo $email;
-	echo $phoneNum;
-	echo $num_of_person;
-	echo $startDate;
-	echo $endDate;
+	
 
 	/*header("refresh:0 url=index.php");
 						echo "<script>
