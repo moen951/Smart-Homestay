@@ -1,5 +1,5 @@
 <?php include 'header.php';?>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
  <script type="text/javascript">
     // Launch this when file was fully loaded
     $(document).ready(function() {
@@ -34,6 +34,13 @@
             }
         });
         // Listen to button click
+        $("#showResult").click(function() {
+            // Get selected value and put in variables
+            var regionSelected = $("#region").val();
+            var stateSelected = $("#state").val();
+            // Put the variables inside the #result div
+            $("#result").html("Region: " + regionSelected + "<br/>State: " + stateSelected);
+        });
         
     });
     </script>
@@ -82,13 +89,16 @@
             <div class="row">
                    
             <div class="col-xs-6">
-            <select class="form-control" name="state">
+            <select id="region" class="form-control" >
               <option id="please_select">Select Region</option>
              <option id="wm">West Malaysia</option>
              <option id="em">East Malaysia</option>
             </select>
-            <select id="state"></select>
-            </div></div>
+            <br>
+            <select id="state" class="form-control" name="state"></select>
+            
+            </div>
+          </div>
         </div>
         <div class="form-group">
             <input type="email" class="form-control"  placeholder="Email" name="email">
@@ -112,15 +122,15 @@
         </div>
         <div class="form-group">
             <div class="row">
-              <div class="col-xs-4">
+              <div class="col-xs-6">
                 <b>Start Date</b>
-              <input type='date' name='startDate' style='width: 145px; height: 30px'>
+              <input type='date' name='startDate' style='width: 160px; height: 30px'>
               <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('startDate')[0].setAttribute('min', today);</script>
             </div>
            <b>    </b><b>     </b>
-            <div class="col-xs-4">
+            <div class="col-xs-6">
                <b>End Date</b>
-              <input type='date' name='endDate' style='width: 145px; height: 30px'>
+              <input type='date' name='endDate' style='width: 160px; height: 30px'>
               <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('endDate')[0].setAttribute('min', today);</script>
             </div>
            
