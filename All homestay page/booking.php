@@ -55,6 +55,8 @@
 <div class="col-sm-5 col-md-4">
 <h3>Reservation</h3>
     <form role="form" class="wowload fadeInRight" action= "insert.php" method="GET" >
+
+
       <div class="form-group">
             <div class="row">
                    
