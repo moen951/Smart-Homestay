@@ -10,7 +10,7 @@
 <div class="container">
 <div class="row">
 
-  <button class="btn btn-default"><a href="booking.php">Booking Now.</a></button>
+  <button class="btn btn-default"><a href="booking.php">Reserve Now.</a></button>
 
 </div>
 </div>

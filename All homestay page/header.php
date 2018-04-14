@@ -13,7 +13,7 @@ if(!isset($_SESSION))
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Smart Homestay & Booking System</title>
+<title>Smart Homestay</title>
 
 <!-- Google fonts -->
 <link href='http://fonts.googleapis.com/css?family=Raleway:300,500,800|Old+Standard+TT' rel='stylesheet' type='text/css'>
@@ -219,7 +219,7 @@ $(document).ready(function()
                     <?php
                    }
                 ?>
-        
+        <li><a href="booking.php">Reserve Now</a></li>
         <li><a href="contact.php">Contact</a></li>
       </ul>
     </div><!-- Wnavbar-collapse -->
