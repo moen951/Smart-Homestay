@@ -104,53 +104,53 @@ $(document).ready(function()
       selectable:true,
       selectHelper:true,
 
-     eventClick: function(event) {
-        // opens events in a popup window
-        window.open(event.url, 'gcalevent', 'width=700,height=600');
-        return false;
-      },
+     // eventClick: function(event) {
+     //    // opens events in a popup window
+     //    window.open(event.url, 'gcalevent', 'width=700,height=600');
+     //    return false;
+     //  },
 
       loading: function(bool) {
         $('#loading').toggle(bool);
       },
 
-    select: function(start, end, allDay)
-    {
-     var title = prompt("Enter Identity Card Number(NRIC) To Make A Reservation");
-     if(title)
-     {
-      var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-      var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-      $.ajax({
-       url:"insert.php",
-       type:"POST",
-       data:{title:title, start:start, end:end},
-       success:function()
-       {
-        calendar.fullCalendar('refetchEvents');
-        alert("Added Successfully");
-       }
-      })
-     }
-    },
-    editable:true,
-    eventResize:function(event)
-    {
-     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-     var title = event.title;
-     var id = event.id;
-     $.ajax({
-      url:"update.php",
-      type:"POST",
-      data:{title:title, start:start, end:end, id:id},
-      success:function(){
+    // select: function(start, end, allDay)
+    // {
+    //  var title = prompt("Enter Identity Card Number(NRIC) To Make A Reservation");
+    //  if(title)
+    //  {
+    //   var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+    //   var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+    //   $.ajax({
+    //    url:"insert.php",
+    //    type:"POST",
+    //    data:{title:title, start:start, end:end},
+    //    success:function()
+    //    {
+    //     calendar.fullCalendar('refetchEvents');
+    //     alert("Added Successfully");
+    //    }
+    //   })
+    //  }
+    // },
+    // editable:true,
+    // eventResize:function(event)
+    // {
+    //  var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+    //  var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+    //  var title = event.title;
+    //  var id = event.id;
+    //  $.ajax({
+    //   url:"update.php",
+    //   type:"POST",
+    //   data:{title:title, start:start, end:end, id:id},
+    //   success:function(){
        
-       calendar.fullCalendar('refetchEvents');
-       alert('Reservation Update');
-      }
-     })
-    },
+    //    calendar.fullCalendar('refetchEvents');
+    //    alert('Reservation Update');
+    //   }
+    //  })
+    // },
 
    
     

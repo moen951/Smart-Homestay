@@ -26,14 +26,14 @@ if($row['userIC'] == $userIC)
 		VALUES ('$userIC', '$username', '$psw_hash', '$email', '2')";
 		$result = $conn->query($sql);
 
-		/*header("refresh:0 url=index.php");
+		header("refresh:0 url=index.php");
 							echo "<script>
 									
 	   								 alert('Signup Successfully, Please Login Again');
 										
 										</script>";
 
-										*/
+										
 	}
 
 	else

@@ -6,7 +6,7 @@
 
 
 
-<div id="information" class="spacer reserve-info ">
+<!-- <div id="information" class="spacer reserve-info ">
 <div class="container">
 <div class="row">
 
@@ -14,7 +14,7 @@
 
 </div>
 </div>
-</div>
+</div> -->
 
 
 

@@ -31,16 +31,20 @@ $endDate= $_GET['endDate'];
 	VALUES ('$guestIC', '$startDate', '$endDate', '$num_of_person')";
 	$result2 = $conn->query($sql2);
 
+	$sql3 ="INSERT INTO events (start_event, end_event) 
+	VALUES ('$startDate', '$endDate')";
+	$result3 = $conn->query($sql3);
+
 
 	
 
-	/*header("refresh:0 url=index.php");
+	header("refresh:0 url=index.php");
 						echo "<script>
 								
-   								 alert('Signup Successfully, Please Login Again');
+   								 alert('Your reservation has been place');
 									
 									</script>";
-									*/
+									
 
 
 
