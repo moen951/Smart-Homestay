@@ -71,10 +71,10 @@ if(!isset($_SESSION))
 <script src="../lib/jquery-ui.min.js"></script>
 <script src="../fullcalendar.min.js"></script>
 
-<!--
+
 
 <script src='../gcal.min.js'></script>
--->
+
 
 <script>
 $(document).ready(function() 

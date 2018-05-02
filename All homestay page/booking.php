@@ -138,9 +138,7 @@
            
           </div>
         </div>
-        <div class="form-group">
-            <textarea class="form-control"  placeholder="Message" rows="4"></textarea>
-        </div>
+        
         <button class="btn btn-default" >Submit</button>
     </form>    
 </div>

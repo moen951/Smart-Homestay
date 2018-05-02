@@ -17,34 +17,53 @@ $startDate= $_GET['startDate'];
 $endDate= $_GET['endDate'];
 //$userIC=$_GET['userIC'];
 
+if(isset($_SESSION['userIC']))
+	{
+		
+
+			$sql2 ="INSERT INTO booking (userIC, startDate, endDate, num_of_person) 
+			VALUES ('$_SESSION['userIC']', '$startDate', '$endDate', '$num_of_person')";
+			$result2 = $conn->query($sql2);
+
+			$sql3 ="INSERT INTO events (start_event, end_event) 
+			VALUES ('$startDate', '$endDate')";
+			$result3 = $conn->query($sql3);
+
+
+			
+
+			header("refresh:0 url=index.php");
+								echo "<script>alert('Your reservation has been place');</script>";
+	}
+else
+{
+		$sql ="INSERT INTO guests (guestIC, firstName, lastName, address, postcode, city,state, phoneNum, email) 
+			VALUES ('$guestIC', '$firstName','$lastName','$address','$postcode','$city','$state', '$phoneNum', '$email')";
+			$result = $conn->query($sql);
 
 
 
-	$sql ="INSERT INTO guests (guestIC, firstName, lastName, address, postcode, city,state, phoneNum, email) 
-	VALUES ('$guestIC', '$firstName','$lastName','$address','$postcode','$city','$state', '$phoneNum', '$email')";
-	$result = $conn->query($sql);
+
+			$sql2 ="INSERT INTO booking (guestIC, startDate, endDate, num_of_person) 
+			VALUES ('$guestIC', '$startDate', '$endDate', '$num_of_person')";
+			$result2 = $conn->query($sql2);
 
 
+			$sql3 ="INSERT INTO events (start_event, end_event) 
+			VALUES ('$startDate', '$endDate')";
+			$result3 = $conn->query($sql3);
 
 
-	$sql2 ="INSERT INTO booking (guestIC, startDate, endDate, num_of_person) 
-	VALUES ('$guestIC', '$startDate', '$endDate', '$num_of_person')";
-	$result2 = $conn->query($sql2);
+			
 
-	$sql3 ="INSERT INTO events (start_event, end_event) 
-	VALUES ('$startDate', '$endDate')";
-	$result3 = $conn->query($sql3);
+			header("refresh:0 url=index.php");
+								echo "<script>alert('Your reservation has been place');</script>";
+											
+}
+
 
 
 	
-
-	header("refresh:0 url=index.php");
-						echo "<script>
-								
-   								 alert('Your reservation has been place');
-									
-									</script>";
-									
 
 
 
