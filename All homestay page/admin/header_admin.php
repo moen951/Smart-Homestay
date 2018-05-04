@@ -11,30 +11,30 @@ if(!isset($_SESSION))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="../assets/jquery.js"></script>
+  <script src="../../assets/jquery.js"></script>
 
 <!-- wow script -->
-<script src="../assets/wow/wow.min.js"></script>
+<script src="../../assets/wow/wow.min.js"></script>
 
 <!-- uniform -->
-<script src="../assets/uniform/js/jquery.uniform.js"></script>
+<script src="../../assets/uniform/js/jquery.uniform.js"></script>
 
 
 <!-- boostrap -->
-<script src="../assets/bootstrap/js/bootstrap.js" type="text/javascript" ></script>
+<script src="../../assets/bootstrap/js/bootstrap.js" type="text/javascript" ></script>
 
 <!-- jquery mobile -->
-<script src="../assets/mobile/touchSwipe.min.js"></script>
+<script src="../../assets/mobile/touchSwipe.min.js"></script>
 
 <!-- jquery mobile -->
-<script src="../assets/respond/respond.js"></script>
+<script src="../../assets/respond/respond.js"></script>
 
 <!-- gallery -->
-<script src="../assets/gallery/jquery.blueimp-gallery.min.js"></script>
+<script src="../../assets/gallery/jquery.blueimp-gallery.min.js"></script>
 
 
 <!-- custom script -->
-<script src="../assets/script.js"></script>
+<script src="../../assets/script.js"></script>
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -50,28 +50,65 @@ if(!isset($_SESSION))
 
 
 <!-- bootstrap -->
-<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css" />
 
 <!-- uniform -->
 <link type="text/css" rel="stylesheet" href="../assets/uniform/css/uniform.default.min.css" />
 
 <!-- animate.css -->
-<link rel="stylesheet" href="../assets/wow/animate.css" />
+<link rel="stylesheet" href="../../assets/wow/animate.css" />
 
 
 <!-- gallery -->
-<link rel="stylesheet" href="../assets/gallery/blueimp-gallery.min.css">
+<link rel="stylesheet" href="../../assets/gallery/blueimp-gallery.min.css">
 
 
 <!-- favicon -->
 <link rel="shortcut icon" href="images/Home.png" type="image/x-icon">
-<link rel="icon" href="../images/home.png" type="image/x-icon">
+<link rel="icon" href="../../images/home.png" type="image/x-icon">
 
-<link rel="stylesheet" href="../assets/style.css">
-<link rel="stylesheet" href="../assets/login_style.css">
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="stylesheet" href="../../assets/login_style.css">
 
 
-<link href="../fullcalendar.min.css" rel="stylesheet" />
+<link href="../../fullcalendar.min.css" rel="stylesheet" />
+
+<style>
+table {
+    margin:5px auto; width:50%
+    border-collapse: collapse;
+    background-color: #ffffff;
+    opacity: 0.7;
+}
+
+table, td, th {
+    border: 3px solid black;
+    align-items: center;
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+    color: black;
+}
+th {
+    
+    color: black;
+}
+td:hover{background-color:#bfa145}
+
+
+.search_form{
+  text-align: center;
+  margin: auto;
+    width: 50%;
+    background-color: #ffffff;
+    opacity: 0.7;
+    box-sizing: border-box;
+    border: 2px ;
+    border-color:#bfa145;
+    border-radius: 4px;
+  }
+</style>
 
 <style>
 
@@ -92,14 +129,15 @@ if(!isset($_SESSION))
 
 </style>
 
-<script src="../lib/moment.min.js"></script>
-<script src="../lib/jquery.min.js"></script>
-<script src="../lib/jquery-ui.min.js"></script>
-<script src="../fullcalendar.min.js"></script>
+<!--
+<script src="../../lib/moment.min.js"></script>
+<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../fullcalendar.min.js"></script>
 
 
 
-<script src='../gcal.min.js'></script>
+<script src='../../gcal.min.js'></script>
 
 
 <script>
@@ -190,7 +228,7 @@ $(document).ready(function()
 
 </script>
 
-
+-->
 
 </head>
 
@@ -217,22 +255,20 @@ $(document).ready(function()
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php"><img src="../images/Icon-Homestay.png"  alt="Smart Homestay & Booking System"></a>
+      <a class="navbar-brand" href="index.php"><img src="../../images/Icon-Homestay.png"  alt="Smart Homestay & Booking System"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
       
       <ul class="nav navbar-nav">        
-        <li><a href="index.php">Home </a></li>
-        <li><a href="rooms-tariff.php">Rooms & Tariff</a></li>        
-        <li><a href="introduction.php">Introduction</a></li>
+        <li><a href="index_admin.php">Home </a></li>
         
            <?php
                  if(isset($_SESSION['userIC']))
                  {
                  ?> 
-                   <li><a href="logout.inc.php">Logout</a></li>
+                   <li><a href="logout_admin.inc.php">Logout</a></li>
                   
                  <?php
                  }
@@ -245,8 +281,7 @@ $(document).ready(function()
                     <?php
                    }
                 ?>
-        <li><a href="booking.php">Reserve Now</a></li>
-        <li><a href="contact.php">Contact</a></li>
+        
       </ul>
     </div><!-- Wnavbar-collapse -->
   </div><!-- container-fluid -->
@@ -270,7 +305,9 @@ $(document).ready(function()
 ?>
 
 
-<div id='calendar'></div>
+<!--<div id='calendar'></div>
+
+  -->
 
 <!-- The Modal -->
 <div id="id01" class="modal">
@@ -356,12 +393,12 @@ window.onclick = function(event) {
 // Get the modal
 var modal = document.getElementById('id02');
 
-
-
 </script>
 
 
 <!-- header -->
+
+
 
 
 

@@ -21,7 +21,7 @@ if($row['pword'] == $pword_hash)
         if ($row['role'] == 1)
       {
         $_SESSION['userIC'] = $row['userIC'];
-        header("Location:admin_page.php");
+        header("Location:admin/index_admin.php");
         }
         else
       {
