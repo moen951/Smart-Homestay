@@ -35,7 +35,7 @@ include 'header_admin.php';
 </fieldset>
 </p>
 </section>	
-<?php include 'footer_admin.php';?>
+
 
 <div class="update_form">
 <?php
