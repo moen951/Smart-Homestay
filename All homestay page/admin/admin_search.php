@@ -59,39 +59,53 @@ $sql2 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE st
 
 if($sql1->num_rows)
 {
-echo"<form  action='deletestudent.php' method='GET'>
-				<table width='1000' height='209' border='1'>
+echo"<form  action='checkIn.php' method='POST'>
+				<table width='1200' height='209' border='1'>
   				<tr>
   				<th width='100' align='center'>IDENTITY CARD NUMBER(NRIC)</th>
-    			<th width='100' align='center'>FIRST NAME</th>
-    			<th width='100' align='center'>LAST NAME</th>
+    			<th width='100' align='center'>FULLNAME</th>
     			<th width='200' align='center'>ADDRESS</th>
     			<th width='100' align='center'>PHONE NUMBER</th>
-    			<th width='100' align='center'>OPTION</th>
+    			<th width='50' align='center'>EMAIL</th>
+    			<th width='50' align='center'>RESERVE DATE</th>
+    			<th width='150' align='center'>OPTION</th>
     			</tr>";
 
 		while($row = mysqli_fetch_array($sql1))
 		{
 	
 		$icno = $_POST['userIC'];
-		$fname = $row['firstName'];
-		$lname = $row['lastName'];
-		$address = $row['address'];
+		$fname = $row['firstName'].' '.$row['lastName'];
+		$address = $row['address'].', '.$row['postcode'].', '.$row['city'].', '.$row['state'];
 		$phone = $row['phoneNum'];
+		$email = $row['email'];
+		$date = 'From '.$row['startDate'].' until '.$row['endDate'];
 		
 			echo"
     			<tr>
     			<td>$icno</td>
     			<td>$fname</td>
-    			<td>$lname</td>
    				<td>$address</td>
    				<td>$phone</td>
-			
+				<td>$email</td>
+				<td>$date</td>
    			
    				
    				
-				<td align='center'><a href='admin_userdetail.php?detail=$icno'>
-				<img src='icon/detail.png' height= 27px; width= 27px;><br>Details</a>				
+				<td align='center'>
+				<input type='hidden' name='userIC' value=$icno>
+				
+					
+	            	<select class='form-control' name='room'>
+		              <option>Room Type</option>
+		              <option>Deluxe</option>
+		              <option>Regular</option>
+		            </select>
+		            
+		            
+		            <br><br><input type='submit' class='btn btn-default' value='Check In'>
+				
+							
 				</td>
 				</tr>";
 			
@@ -105,13 +119,14 @@ echo"<form  action='deletestudent.php' method='GET'>
 	else if($sql2->num_rows)
 		{
 		echo"<form  action='deletestudent.php' method='GET'>
-						<table width='1000' height='209' border='1'>
+						<table width='1100' height='209' border='1'>
 		  				<tr>
 		  				<th width='100' align='center'>IDENTITY CARD NUMBER(NRIC)</th>
-		    			<th width='100' align='center'>FIRST NAME</th>
-		    			<th width='100' align='center'>LAST NAME</th>
+		    			<th width='100' align='center'>FULLNAME</th>
 		    			<th width='200' align='center'>ADDRESS</th>
 		    			<th width='100' align='center'>PHONE NUMBER</th>
+		    			<th width='50' align='center'>EMAIL</th>
+		    			<th width='50' align='center'>RESERVE DATE</th>
 		    			<th width='100' align='center'>OPTION</th>
 		    			</tr>";
 
@@ -120,24 +135,39 @@ echo"<form  action='deletestudent.php' method='GET'>
 				{
 			
 				$icno = $_POST['userIC'];
-				$fname = $row['firstName'];
-				$lname = $row['lastName'];
-				$address = $row['address'];
+				$fname = $row['firstName'].' '.$row['lastName'];
+				$address = $row['address'].', '.$row['postcode'].', '.$row['city'].', '.$row['state'];
 				$phone = $row['phoneNum'];
+				$email = $row['email'];
+				$date = 'From '.$row['startDate'].' until '.$row['endDate'];
+
 				
 					echo"
 		    			<tr>
 		    			<td>$icno</td>
 		    			<td>$fname</td>
-		    			<td>$lname</td>
 		   				<td>$address</td>
 		   				<td>$phone</td>
+		   				<td>$email</td>
+		   				<td>$date</td>
 					
 		   			
 		   				
 		   				
-						<td align='center'><a href='admin_userdetail.php?detail=$icno'>
-						<img src='icon/detail.png' height= 27px; width= 27px;><br>Details</a>				
+						<td align='center'>
+
+						<input type='hidden' name='userIC' value=$icno>
+				
+				
+			            	<select class='form-control' name='room'>
+				              <option>Room Type</option>
+				              <option>Deluxe</option>
+				              <option>Regular</option>
+				            </select>
+				            
+				            
+				            <br><br><input type='submit' class='btn btn-default' value='Check In'>
+						
 						</td>
 						</tr>";
 					
