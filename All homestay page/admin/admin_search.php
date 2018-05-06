@@ -60,14 +60,16 @@ $sql2 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE st
 if($sql1->num_rows)
 {
 echo"<form  action='checkIn.php' method='POST'>
-				<table width='1200' height='209' border='1'>
+				<table width=auto height='209' border='1'>
   				<tr>
-  				<th width='100' align='center'>IDENTITY CARD NUMBER(NRIC)</th>
-    			<th width='100' align='center'>FULLNAME</th>
-    			<th width='200' align='center'>ADDRESS</th>
-    			<th width='100' align='center'>PHONE NUMBER</th>
-    			<th width='50' align='center'>EMAIL</th>
-    			<th width='50' align='center'>RESERVE DATE</th>
+  				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
+    			<th  align='center'>FULLNAME</th>
+    			<th  align='center'>ADDRESS</th>
+    			<th  align='center'>PHONE NUMBER</th>
+    			<th  align='center'>EMAIL</th>
+    			<th  align='center'>RESERVE DATE</th>
+    			<th  align='center'>NUMBER OF PERSON</th>
+
     			<th width='150' align='center'>OPTION</th>
     			</tr>";
 
@@ -80,6 +82,7 @@ echo"<form  action='checkIn.php' method='POST'>
 		$phone = $row['phoneNum'];
 		$email = $row['email'];
 		$date = 'From '.$row['startDate'].' until '.$row['endDate'];
+		$num_of_person=$row['num_of_person'];
 		
 			echo"
     			<tr>
@@ -89,8 +92,7 @@ echo"<form  action='checkIn.php' method='POST'>
    				<td>$phone</td>
 				<td>$email</td>
 				<td>$date</td>
-   			
-   				
+				<td>$num_of_person</td>
    				
 				<td align='center'>
 				<input type='hidden' name='userIC' value=$icno>
@@ -118,20 +120,21 @@ echo"<form  action='checkIn.php' method='POST'>
 
 	else if($sql2->num_rows)
 		{
-		echo"<form  action='deletestudent.php' method='GET'>
-						<table width='1100' height='209' border='1'>
+		echo"<form  action='checkIn.php' method='POST'>
+						<table width='auto' height='209' border='1'>
 		  				<tr>
-		  				<th width='100' align='center'>IDENTITY CARD NUMBER(NRIC)</th>
-		    			<th width='100' align='center'>FULLNAME</th>
-		    			<th width='200' align='center'>ADDRESS</th>
-		    			<th width='100' align='center'>PHONE NUMBER</th>
-		    			<th width='50' align='center'>EMAIL</th>
-		    			<th width='50' align='center'>RESERVE DATE</th>
-		    			<th width='100' align='center'>OPTION</th>
+		  				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
+		    			<th  align='center'>FULLNAME</th>
+		    			<th  align='center'>ADDRESS</th>
+		    			<th  align='center'>PHONE NUMBER</th>
+		    			<th  align='center'>EMAIL</th>
+		    			<th  align='center'>RESERVE DATE</th>
+		    			<th  align='center'>NUMBER OF PERSON</th>
+		    			<th  align='center'>OPTION</th>
 		    			</tr>";
 
 		    		
-				while($row = mysqli_fetch_array($sql1))
+				while($row = mysqli_fetch_array($sql2))
 				{
 			
 				$icno = $_POST['userIC'];
@@ -140,6 +143,8 @@ echo"<form  action='checkIn.php' method='POST'>
 				$phone = $row['phoneNum'];
 				$email = $row['email'];
 				$date = 'From '.$row['startDate'].' until '.$row['endDate'];
+				$num_of_person=$row['num_of_person'];
+
 
 				
 					echo"
@@ -150,6 +155,7 @@ echo"<form  action='checkIn.php' method='POST'>
 		   				<td>$phone</td>
 		   				<td>$email</td>
 		   				<td>$date</td>
+		   				<td>$num_of_person</td>
 					
 		   			
 		   				

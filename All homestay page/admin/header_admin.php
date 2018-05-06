@@ -263,7 +263,7 @@ $(document).ready(function()
       
       <ul class="nav navbar-nav">        
         <li><a href="index_admin.php">Home </a></li>
-        <li><a href="index_admin.php">Check Out </a></li>
+        <li><a href="checkOutView.php">Check Out </a></li>
         
            <?php
                  if(isset($_SESSION['userIC']))

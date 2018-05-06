@@ -27,17 +27,17 @@ if($result1)
 {
 	if($room!='Regular')
 		{
-		echo"<script>alert('This user $userIC room is set to $room ')</script>
-		<script src='room1_checkIn.js'></script>";
+			echo "<script src='room1_checkIn.js'></script>";
+			echo"<script>alert('This user $userIC room is set to $room ')</script>";
 
-		header("refresh:0 url=index_admin.php");
+			header("refresh:2 url=index_admin.php");
 		}
 
 	else
 		{ 
-		echo"<script>alert('This user $userIC room is set to $room ')</script>
-		<script src='room2_checkIn.js'></script>";
-		header("refresh:0 url=index_admin.php");
+			echo"<script>alert('This user $userIC room is set to $room ')</script>
+			<script src='room2_checkIn.js'></script>";
+			header("refresh:2 url=index_admin.php");
 		}
 
 }
@@ -46,15 +46,15 @@ else if($result2)
 {
 	if($room!='Regular')
 		{
-		echo"<script>alert('This user $userIC room is set to $room ')</script>
-		<script src='room1_checkIn.js'></script>";
-		header("refresh:0 url=index_admin.php");
+			echo "<script src='room1_checkIn.js'></script>";
+			echo"<script>alert('This user $userIC room is set to $room ')</script>";
+			header("refresh:2 url=index_admin.php");
 		}
 	else
 		{ 
-		echo"<script>alert('This user $userIC room is set to $room ')</script>
-		<script src='room2_checkIn.js'></script>";
-		header("refresh:0 url=index_admin.php");
+			echo "<script src='room2_checkIn.js'></script>";	
+			echo"<script>alert('This user $userIC room is set to $room ')</script>";
+			header("refresh:2 url=index_admin.php");
 		}
 }
 
