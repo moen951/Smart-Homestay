@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2018 at 04:58 AM
+-- Generation Time: May 07, 2018 at 07:46 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -34,16 +34,18 @@ CREATE TABLE `booking` (
   `userIC` varchar(15) DEFAULT NULL,
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
-  `num_of_person` int(11) DEFAULT NULL
+  `num_of_person` int(11) DEFAULT NULL,
+  `status` varchar(100) NOT NULL DEFAULT 'Empty'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`bookingID`, `guestIC`, `userIC`, `startDate`, `endDate`, `num_of_person`) VALUES
-(2, '960411017765', NULL, '2018-04-11', '2018-04-12', 6),
-(3, '960411017755', NULL, '2018-04-11', '2018-04-12', 4);
+INSERT INTO `booking` (`bookingID`, `guestIC`, `userIC`, `startDate`, `endDate`, `num_of_person`, `status`) VALUES
+(2, '960411017765', NULL, '2018-04-11', '2018-04-12', 6, 'Empty'),
+(3, '960411017755', NULL, '2018-04-11', '2018-04-12', 4, 'Empty'),
+(4, '942501025633', NULL, '2018-05-13', '2018-05-22', 3, 'Check Out');
 
 -- --------------------------------------------------------
 
@@ -53,9 +55,9 @@ INSERT INTO `booking` (`bookingID`, `guestIC`, `userIC`, `startDate`, `endDate`,
 
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `start_event` datetime NOT NULL,
-  `end_event` datetime NOT NULL
+  `title` varchar(255) NOT NULL DEFAULT 'Reserve',
+  `start_event` date NOT NULL,
+  `end_event` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -63,7 +65,8 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `title`, `start_event`, `end_event`) VALUES
-(2, '992003884', '2018-03-06 00:00:00', '2018-03-09 00:00:00');
+(2, 'Reserve', '2018-04-27', '2018-04-30'),
+(3, 'Reserve', '2018-05-13', '2018-05-22');
 
 -- --------------------------------------------------------
 
@@ -88,11 +91,30 @@ CREATE TABLE `guests` (
 --
 
 INSERT INTO `guests` (`guestIC`, `firstName`, `lastName`, `address`, `postcode`, `city`, `state`, `phoneNum`, `email`) VALUES
+('942501025633', 'mat', 'meor', 'DT 2534 Jalan SB 1, Taman Seri Bayan', '76100', 'Durian Tunggal', 'Kedah', '+60111624720', 'ahmadamirul7@jumpmail.com'),
 ('960411017725', 'Ahmad ', 'amirul', 'Dt3433,jalan johor', '07600', 'Durian Tunggal', '', '0126735373', 'meon@ymail.com'),
 ('960411017728', 'Ahmad ', 'amirul', 'Dt3433,jalan johor', '07600', 'Durian Tunggal', 'Perak', '0126735373', 'meon@ymail.com'),
 ('960411017755', 'Ahmad ', 'amirul', 'Dt3433,jalan johor', '07600', 'Durian Tunggal', 'Selangor', '0126735373', 'meon@ymail.com'),
 ('960411017765', 'Ahmad ', 'amirul', 'Dt3433,jalan johor', '07600', 'Durian Tunggal', 'Kedah', '0126735373', 'meon@ymail.com'),
 ('960411017767', 'Ahmad ', 'amirul', 'Dt3433,jalan johor', '07600', 'Durian Tunggal', 'Sarawak', '0126735373', 'meon@ymail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profile`
+--
+
+CREATE TABLE `profile` (
+  `userIC` varchar(15) NOT NULL,
+  `firstName` varchar(70) NOT NULL,
+  `lastName` varchar(70) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `postcode` varchar(70) NOT NULL,
+  `city` varchar(70) NOT NULL,
+  `state` varchar(70) NOT NULL,
+  `phoneNum` varchar(12) NOT NULL,
+  `email` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -145,6 +167,12 @@ ALTER TABLE `guests`
   ADD PRIMARY KEY (`guestIC`);
 
 --
+-- Indexes for table `profile`
+--
+ALTER TABLE `profile`
+  ADD PRIMARY KEY (`userIC`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -158,13 +186,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -176,6 +204,12 @@ ALTER TABLE `events`
 ALTER TABLE `booking`
   ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`guestIC`) REFERENCES `guests` (`guestIC`),
   ADD CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`userIC`) REFERENCES `users` (`userIC`);
+
+--
+-- Constraints for table `profile`
+--
+ALTER TABLE `profile`
+  ADD CONSTRAINT `profile_ibfk_1` FOREIGN KEY (`userIC`) REFERENCES `users` (`userIC`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
