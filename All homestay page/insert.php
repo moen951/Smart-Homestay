@@ -3,37 +3,48 @@
 //insert.php
 
 include 'dbconnection.php';
-$guestIC = $_GET['guestIC'];
-$firstName = $_GET['firstName'];
-$lastName = $_GET['lastName'];
-$address =$_GET['address'];
-$postcode =$_GET['postcode'];
-$city =$_GET['city'];
-$state=$_GET['state'];
-$email = $_GET['email'];
-$phoneNum = $_GET['phoneNum'];
-$num_of_person= $_GET['num_of_person'];
-$startDate= $_GET['startDate'];
-$endDate= $_GET['endDate'];
-//$userIC=$_GET['userIC'];
+$guestIC = $_POST['guestIC'];
+$firstName = $_POST['firstName'];
+$lastName = $_POST['lastName'];
+$address =$_POST['address'];
+$postcode =$_POST['postcode'];
+$city =$_POST['city'];
+$state=$_POST['state'];
+$email = $_POST['email'];
+$phoneNum = $_POST['phoneNum'];
+$num_of_person= $_POST['num_of_person'];
+$startDate= $_POST['startDate'];
+$endDate= $_POST['endDate'];
+$room_type=$_POST['room'];
+$userIC=$_POST['userIC'];
 
-if(isset($_SESSION['userIC']))
+if($userIC)
 	{
 		
 
-			$sql2 ="INSERT INTO booking (userIC, startDate, endDate, num_of_person) 
-			VALUES ('$_SESSION['userIC']', '$startDate', '$endDate', '$num_of_person')";
+			$sql2 ="INSERT INTO booking (userIC, startDate, endDate, num_of_person, room_type) 
+			VALUES ('$userIC', '$startDate', '$endDate', '$num_of_person','$room_type' )";
 			$result2 = $conn->query($sql2);
-
-			$sql3 ="INSERT INTO events (start_event, end_event) 
-			VALUES ('$startDate', '$endDate')";
-			$result3 = $conn->query($sql3);
-
 
 			
 
-			header("refresh:0 url=index.php");
-								echo "<script>alert('Your reservation has been place');</script>";
+			if($result2)
+			{
+
+				$sql3 ="INSERT INTO events (start_event, end_event) 
+										VALUES ('$startDate', '$endDate')";
+										$result3 = $conn->query($sql3);
+				header("refresh:0 url=index.php");
+				echo "<script>alert('Your reservation has been place');</script>";
+
+								
+			}
+			else
+			{
+				//header("refresh:0 url=index.php");
+				echo "<script>alert('There are problem on updating the database ');</script>";
+			}
+
 	}
 else
 {
@@ -42,22 +53,31 @@ else
 			$result = $conn->query($sql);
 
 
+			if($result)
+			{
+					$sql2 ="INSERT INTO booking (guestIC, startDate, endDate, num_of_person, room_type) 
+					VALUES ('$guestIC', '$startDate', '$endDate', '$num_of_person','$room_type')";
+					$result2 = $conn->query($sql2);
 
 
-			$sql2 ="INSERT INTO booking (guestIC, startDate, endDate, num_of_person) 
-			VALUES ('$guestIC', '$startDate', '$endDate', '$num_of_person')";
-			$result2 = $conn->query($sql2);
-
-
-			$sql3 ="INSERT INTO events (start_event, end_event) 
-			VALUES ('$startDate', '$endDate')";
-			$result3 = $conn->query($sql3);
+					$sql3 ="INSERT INTO events (start_event, end_event) 
+					VALUES ('$startDate', '$endDate')";
+					$result3 = $conn->query($sql3);
 
 
 			
 
 			header("refresh:0 url=index.php");
 								echo "<script>alert('Your reservation has been place');</script>";
+			}
+
+			else
+			{
+				header("refresh:0 url=index.php");
+				echo "<script>alert('There are problem on updating the database ');</script>";
+			}
+
+			
 											
 }
 

@@ -5,6 +5,34 @@ include 'header_admin.php';
 
 ?>
 
+<style type="text/css">
+table {
+    margin:5px auto; width:50%
+    border-collapse: collapse;
+    background-color: #ffffff;
+    opacity: 0.7;
+}
+
+table, td, th {
+    border: 3px solid black;
+    align-items: center;
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+    color: black;
+}
+th {
+    
+    color: black;
+}
+td:hover{background-color:#bfa145}	
+
+
+	
+</style>
+
+
 
 <section id="content" class="column-right">
 <p>
@@ -69,6 +97,7 @@ echo"<form  action='checkIn.php' method='POST'>
     			<th  align='center'>EMAIL</th>
     			<th  align='center'>RESERVE DATE</th>
     			<th  align='center'>NUMBER OF PERSON</th>
+    			<th  align='center'>ROOM TYPE</th>
 
     			<th width='150' align='center'>OPTION</th>
     			</tr>";
@@ -83,6 +112,7 @@ echo"<form  action='checkIn.php' method='POST'>
 		$email = $row['email'];
 		$date = 'From '.$row['startDate'].' until '.$row['endDate'];
 		$num_of_person=$row['num_of_person'];
+		$room_type=$row['room_type'];
 		
 			echo"
     			<tr>
@@ -93,18 +123,13 @@ echo"<form  action='checkIn.php' method='POST'>
 				<td>$email</td>
 				<td>$date</td>
 				<td>$num_of_person</td>
+				<td>$room_type</td>
    				
 				<td align='center'>
 				<input type='hidden' name='userIC' value=$icno>
-				
-					
-	            	<select class='form-control' name='room'>
-		              <option>Room Type</option>
-		              <option>Deluxe</option>
-		              <option>Regular</option>
-		            </select>
-		            
-		            
+				<input type='hidden' name='userName' value=$fname>
+				<input type='hidden' name='room_type' value=$room_type>
+
 		            <br><br><input type='submit' class='btn btn-default' value='Check In'>
 				
 							
@@ -130,6 +155,7 @@ echo"<form  action='checkIn.php' method='POST'>
 		    			<th  align='center'>EMAIL</th>
 		    			<th  align='center'>RESERVE DATE</th>
 		    			<th  align='center'>NUMBER OF PERSON</th>
+		    			<th  align='center'>ROOM TYPE</th>
 		    			<th  align='center'>OPTION</th>
 		    			</tr>";
 
@@ -144,6 +170,7 @@ echo"<form  action='checkIn.php' method='POST'>
 				$email = $row['email'];
 				$date = 'From '.$row['startDate'].' until '.$row['endDate'];
 				$num_of_person=$row['num_of_person'];
+				$room_type=$row['room_type'];
 
 
 				
@@ -156,6 +183,7 @@ echo"<form  action='checkIn.php' method='POST'>
 		   				<td>$email</td>
 		   				<td>$date</td>
 		   				<td>$num_of_person</td>
+		   				<td>$room_type</td>
 					
 		   			
 		   				
@@ -163,13 +191,8 @@ echo"<form  action='checkIn.php' method='POST'>
 						<td align='center'>
 
 						<input type='hidden' name='userIC' value=$icno>
-				
-				
-			            	<select class='form-control' name='room'>
-				              <option>Room Type</option>
-				              <option>Deluxe</option>
-				              <option>Regular</option>
-				            </select>
+						<input type='hidden' name='userName' value=$fname>
+						<input type='hidden' name='room_type' value=$room_type>
 				            
 				            
 				            <br><br><input type='submit' class='btn btn-default' value='Check In'>

@@ -5,6 +5,32 @@ include 'header_admin.php';
 
 ?>
 
+<style type="text/css">
+table {
+    margin:5px auto; width:50%
+    border-collapse: collapse;
+    background-color: #ffffff;
+    opacity: 0.7;
+}
+
+table, td, th {
+    border: 3px solid black;
+    align-items: center;
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+    color: black;
+}
+th {
+    
+    color: black;
+}
+td:hover{background-color:#bfa145}	
+
+
+	
+</style>
 
 <section id="content" class="column-right">
 <p>
@@ -89,7 +115,7 @@ echo"<form  action='checkOut.php' method='POST'>
 		$phone = $row['phoneNum'];
 		$email = $row['email'];
 		$date = 'From '.$row['startDate'].' until '.$row['endDate'];
-		$roomType=$row['status'];
+		$room_type=$row['room_type'];
 		
 			echo"
     			<tr>
@@ -99,11 +125,12 @@ echo"<form  action='checkOut.php' method='POST'>
    				<td>$phone</td>
 				<td>$email</td>
 				<td>$date</td>
-				<td>$roomType</td>
+				<td>$room_type</td>
    				
 				<td align='center'>
+				<input type='hidden' name='userName' value=$fname>
 				<input type='hidden' name='userIC' value=$icno>
-				<input type='hidden' name='room' value=$roomType>		
+				<input type='hidden' name='room_type' value=$room_type>		
 	            	
 		       	            
 		            <br><br><input type='submit' class='btn btn-default' value='Check Out'>
@@ -144,7 +171,7 @@ echo"<form  action='checkOut.php' method='POST'>
 				$phone = $row['phoneNum'];
 				$email = $row['email'];
 				$date = 'From '.$row['startDate'].' until '.$row['endDate'];
-				$roomType=$row['status'];
+				$room_type=$row['room_type'];
 
 
 
@@ -157,14 +184,14 @@ echo"<form  action='checkOut.php' method='POST'>
 		   				<td>$phone</td>
 		   				<td>$email</td>
 		   				<td>$date</td>
-						<td>$roomType</td>
+						<td>$room_type</td>
 		   			
 		   				
 		   				
 						<td align='center'>
-
+						<input type='hidden' name='userName' value=$fname>
 						<input type='hidden' name='userIC' value=$icno>
-						<input type='hidden' name='room' value=$roomType>
+						<input type='hidden' name='room_type' value=$room_type>
 				            
 				            
 				            <br><br><input type='submit' class='btn btn-default' value='Check Out'>
@@ -205,7 +232,7 @@ echo"<form  action='checkOut.php' method='POST'>
 				$phone = $row['phoneNum'];
 				$email = $row['email'];
 				$date = 'From '.$row['startDate'].' until '.$row['endDate'];				
-				$roomType=$row['status'];
+				$room_type=$row['room_type'];
 				
 
 				
@@ -217,14 +244,14 @@ echo"<form  action='checkOut.php' method='POST'>
 		   				<td>$phone</td>
 		   				<td>$email</td>
 		   				<td>$date</td>		   				
-						<td>$roomType</td>
+						<td>$room_type</td>
 		   			
 		   				
 		   				
 						<td align='center'>
-
+						<input type='hidden' name='userName' value=$fname>
 						<input type='hidden' name='userIC' value=$icno>
-						<input type='hidden' name='room' value=$roomType>
+						<input type='hidden' name='room_type' value=$room_type>
 				            
 				            <br><br><input type='submit' class='btn btn-default' value='Check Out'>
 						
@@ -264,7 +291,7 @@ else if($sql4->num_rows)
 				$phone = $row['phoneNum'];
 				$email = $row['email'];
 				$date = 'From '.$row['startDate'].' until '.$row['endDate'];				
-				$roomType=$row['status'];
+				$room_type=$row['room_type'];
 
 
 
@@ -277,14 +304,14 @@ else if($sql4->num_rows)
 		   				<td>$phone</td>
 		   				<td>$email</td>
 		   				<td>$date</td>		   				
-						<td>$roomType</td>
+						<td>$room_type</td>
 		   			
 		   				
 		   				
 						<td align='center'>
-
+						<input type='hidden' name='userName' value=$fname>
 						<input type='hidden' name='userIC' value=$icno>
-						<input type='hidden' name='room' value=$roomType>
+						<input type='hidden' name='room_type' value=$room_type>
 				            
 				            <br><br><input type='submit' class='btn btn-default' value='Check Out'>
 						

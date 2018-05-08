@@ -74,27 +74,7 @@ if(!isset($_SESSION))
 <link href="../../fullcalendar.min.css" rel="stylesheet" />
 
 <style>
-table {
-    margin:5px auto; width:50%
-    border-collapse: collapse;
-    background-color: #ffffff;
-    opacity: 0.7;
-}
 
-table, td, th {
-    border: 3px solid black;
-    align-items: center;
-}
-th, td {
-    padding: 15px;
-    text-align: center;
-    color: black;
-}
-th {
-    
-    color: black;
-}
-td:hover{background-color:#bfa145}
 
 
 .search_form{
@@ -129,7 +109,7 @@ td:hover{background-color:#bfa145}
 
 </style>
 
-<!--
+
 <script src="../../lib/moment.min.js"></script>
 <script src="../../lib/jquery.min.js"></script>
 <script src="../../lib/jquery-ui.min.js"></script>
@@ -228,7 +208,6 @@ $(document).ready(function()
 
 </script>
 
--->
 
 </head>
 
@@ -306,9 +285,9 @@ $(document).ready(function()
 ?>
 
 
-<!--<div id='calendar'></div>
 
-  -->
+
+  
 <?php
 
 

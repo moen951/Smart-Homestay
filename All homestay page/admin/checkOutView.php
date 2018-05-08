@@ -5,6 +5,32 @@ include 'header_admin.php';
 
 ?>
 
+<style type="text/css">
+table {
+    margin:5px auto; width:50%
+    border-collapse: collapse;
+    background-color: #ffffff;
+    opacity: 0.7;
+}
+
+table, td, th {
+    border: 3px solid black;
+    align-items: center;
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+    color: black;
+}
+th {
+    
+    color: black;
+}
+td:hover{background-color:#bfa145}	
+
+
+	
+</style>
 
 <section id="content" class="column-right">
 <p>

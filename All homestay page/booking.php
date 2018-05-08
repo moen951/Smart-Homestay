@@ -44,107 +44,269 @@
         
     });
     </script>
+<?php
+
+if(isset($_SESSION['userIC']))
+{
 
 
+      $sql1 = mysqli_query($conn,'SELECT * FROM profile WHERE userIC = "'.$_SESSION['userIC'].'"');
 
-
-<div id="information" class="spacer reserve-info ">
-<div class="container">
-<div class="row">
-
-<div class="col-sm-5 col-md-4">
-<h3>Reservation</h3>
-    <form role="form" class="wowload fadeInRight" action= "insert.php" method="GET" >
-
-
-      <div class="form-group">
-            <div class="row">
-                   
-            <div class="col-xs-6">
-            <select class="form-control" name="title">
-              <option>Title</option>
-              <option>Mr.</option>
-              <option>Mrs.</option>
-              <option>Ms.</option>
-            </select>
-            </div></div>
-        </div>
-      <div class="form-group">
-            <input type="text" class="form-control"  placeholder="Identity Card Number(NRIC) " name="guestIC">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control"  placeholder="First Name" name="firstName">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control"  placeholder="Last Name" name="lastName">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control"  placeholder="Address" name="address">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control"  placeholder="Postcode" name="postcode">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control"  placeholder="City" name="city">
-        </div>
-        <div class="form-group">
-            <div class="row">
-                   
-            <div class="col-xs-6">
-            <select id="region" class="form-control" >
-              <option id="please_select">Select Region</option>
-             <option id="wm">West Malaysia</option>
-             <option id="em">East Malaysia</option>
-            </select>
-            <br>
-            <select id="state" class="form-control" name="state"></select>
-            
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-            <input type="email" class="form-control"  placeholder="Email" name="email">
-        </div>
-        <div class="form-group">
-            <input type="Phone" class="form-control"  placeholder="Phone" name="phoneNum">
-        </div>        
-        <div class="form-group">
-            <div class="row">
-                  
-            <div class="col-xs-6">
-            <select class="form-control" name="num_of_person">
-              <option>No. of Adult</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-            </div></div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-              <div class="col-xs-6">
-                <b>Start Date</b>
-              <input type='date' name='startDate' style='width: 160px; height: 30px'>
-              <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('startDate')[0].setAttribute('min', today);</script>
-            </div>
-           <b>    </b><b>     </b>
-            <div class="col-xs-6">
-               <b>End Date</b>
-              <input type='date' name='endDate' style='width: 160px; height: 30px'>
-              <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('endDate')[0].setAttribute('min', today);</script>
-            </div>
-           
-          </div>
-        </div>
+      if($sql1->num_rows)
+      {
+        while($row = mysqli_fetch_array($sql1))
+        {
         
-        <button class="btn btn-default" >Submit</button>
-    </form>    
-</div>
-</div>  
-</div>
-</div>
-<!-- reservation-information -->
+          $userIC = $row['userIC'];
+          $fname = $row['firstName'];
+          $lname= $row['lastName'];
+          $address = $row['address'];
+          $postcode=$row['postcode'];
+          $city=$row['city'];
+          $state=$row['state'];
+          $phoneNum = $row['phoneNum'];
+          $email = $row['email'];
 
+          
+
+          echo"
+              <div id='information' class='spacer reserve-info '>
+          <div class'container'>
+          <div class='row'>
+
+          <div class='col-sm-5 col-md-4'>
+
+              <form role='form' class='wowload fadeInRight' action= 'insert.php' method='POST' >
+
+
+                <div class='form-group'>
+                      <div class='row'>
+                             
+                      <div class='col-xs-6'>
+                      <select class='form-control' name='title'>
+                        <option>Title</option>
+                        <option>Mr.</option>
+                        <option>Mrs.</option>
+                        <option>Ms.</option>
+                      </select>
+                      </div></div>
+                  </div>
+                <div class='form-group'>
+                      <input type='text' class='form-control'  placeholder='Identity Card Number(NRIC) ' name='userIC' value= '".$userIC."' required>
+                  </div>
+                  <div class='form-group'>
+                      <input type='text' class='form-control'  placeholder='First Name' name='firstName' value='".$fname."' required>
+                  </div>
+                  <div class='form-group'>
+                      <input type='text' class='form-control'  placeholder='Last Name' name='lastName' value='".$lname."' required>
+                  </div>
+                  <div class='form-group'>
+                      <input type='text' class='form-control'  placeholder'Address' name='address' value= '".$address."' required>
+                  </div>
+                  <div class='form-group'>
+                      <input type='text' class='form-control'  placeholder='Postcode' name='postcode' value='".$postcode."' required>
+                  </div>
+                  <div class='form-group'>
+                      <input type='text' class='form-control'  placeholder='City' name='city'  value='".$city."' required>
+                  </div>
+                  <div class='form-group'>
+                      <div class='row'>
+                             
+                      <div class='col-xs-6'>
+                      <select id='region' class='form-control' >
+                        <option id='please_select'>Select Region</option>
+                       <option id='wm'>West Malaysia</option>
+                       <option id='em'>East Malaysia</option>
+                      </select>
+                      <br>
+                      <select id='state' class='form-control' name='state' value= '".$state."' required></select>
+                      
+                      </div>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                      <input type='email' class='form-control'  placeholder='Email' name='email' value= '".$email."' required>
+                  </div>
+                  <div class='form-group'>
+                      <input type='Phone' class='form-control'  placeholder='Phone' name='phoneNum' value= '".$phoneNum."' required>
+                  </div>         
+                    </div>
+                  </div>
+
+
+                  <div class='form-group'>
+                  <div class='row'>
+                        
+                  <div class='col-xs-6'>
+                  <select class='form-control' name='num_of_person' required>
+                    <option>No. of Adult</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                  </div></div>
+              </div>
+
+              <div class='form-group'>
+                  <div class='row'>
+                        
+                  <div class='col-xs-6'>
+                  <select class='form-control' name='room' required>
+                    <option>Room Type</option>
+                    <option>Deluxe</option>
+                    <option>Regular</option>
+          
+                  </select>
+                  </div></div>
+              </div>
+              <div class='form-group'>
+                  <div class='row'>
+                    <div class='col-xs-6'>
+                      <b>Start Date</b>
+                    <input type='date' name='startDate' style='width: 160px; height: 30px' >
+                    <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('startDate')[0].setAttribute('min', today);</script>
+                  </div>
+                 <b>    </b><b>     </b>
+                  <div class='col-xs-6'>
+                     <b>End Date</b>
+                    <input type='date' name='endDate' style='width: 160px; height: 30px' >
+                    <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('endDate')[0].setAttribute('min', today);</script>
+                  </div>
+                 
+                </div>
+              </div>
+                  
+                  <button class='btn btn-default' >Save</button>
+              </form>    
+          </div>
+          </div>  
+          </div>
+          </div>
+              ";
+
+        }
+
+
+      }
+}
+else
+    {
+      ?>
+
+      <div id="information" class="spacer reserve-info ">
+      <div class="container">
+      <div class="row">
+
+      <div class="col-sm-5 col-md-4">
+      <h3>Reservation</h3>
+          <form role="form" class="wowload fadeInRight" action= "insert.php" method="POST" >
+
+            
+            <div class="form-group">
+                  <div class="row">
+                         
+                  <div class="col-xs-6">
+                  <select class="form-control" name="title">
+                    <option>Title</option>
+                    <option>Mr.</option>
+                    <option>Mrs.</option>
+                    <option>Ms.</option>
+                  </select>
+                  </div></div>
+              </div>
+            <div class="form-group">
+                  <input type="text" class="form-control"  placeholder="Identity Card Number(NRIC) " name="guestIC" required>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control"  placeholder="First Name" name="firstName" required>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control"  placeholder="Last Name" name="lastName" required>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control"  placeholder="Address" name="address" required>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control"  placeholder="Postcode" name="postcode" required>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control"  placeholder="City" name="city" required>
+              </div>
+              <div class="form-group">
+                  <div class="row">
+                         
+                  <div class="col-xs-6">
+                  <select id="region" class="form-control" >
+                    <option id="please_select">Select Region</option>
+                   <option id="wm">West Malaysia</option>
+                   <option id="em">East Malaysia</option>
+                  </select>
+                  <br>
+                  <select id="state" class="form-control" name="state" required></select>
+                  
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                  <input type="email" class="form-control"  placeholder="Email" name="email" required>
+              </div>
+              <div class="form-group">
+                  <input type="Phone" class="form-control"  placeholder="Phone" name="phoneNum" required>
+              </div>        
+
+              <div class="form-group">
+                  <div class="row">
+                        
+                  <div class="col-xs-6">
+                  <select class="form-control" name="num_of_person" required>
+                    <option>No. of Adult</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                  </div></div>
+              </div>
+
+              <div class="form-group">
+                  <div class="row">
+                        
+                  <div class="col-xs-6">
+                  <select class="form-control" name="room" required>
+                    <option>Room Type</option>
+                    <option>Deluxe</option>
+                    <option>Regular</option>
+          
+                  </select>
+                  </div></div>
+              </div>
+              <div class="form-group">
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <b>Start Date</b>
+                    <input type='date' name='startDate' style='width: 160px; height: 30px' >
+                    <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('startDate')[0].setAttribute('min', today);</script>
+                  </div>
+                 <b>    </b><b>     </b>
+                  <div class="col-xs-6">
+                     <b>End Date</b>
+                    <input type='date' name='endDate' style='width: 160px; height: 30px' >
+                    <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('endDate')[0].setAttribute('min', today);</script>
+                  </div>
+                 
+                </div>
+              </div>
+              
+              <button class="btn btn-default" >Submit</button>
+          </form>    
+      </div>
+      </div>  
+      </div>
+      </div>
+      <!-- reservation-information -->
+
+      <?php } ?>
 <?php include 'footer.php';?>

@@ -17,12 +17,6 @@ var roomRef = ref.child('Room2');
 
 roomRef.update({
  '/status2': false,
- '/bilik1': false,
- '/bilik2': false,
- '/bilik3': false,
- '/fan': false,
- '/light': false,
- '/livingRoom': false,
  
 })
 .catch(function (err) {

@@ -33,6 +33,8 @@
 </p>
 </section>
 
+<div id='calendar'></div>
+
 
 <!-- <div id="information" class="spacer reserve-info ">
 <div class="container">

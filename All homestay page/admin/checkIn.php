@@ -14,28 +14,29 @@
 include 'dbconnection.php';
 
 $userIC=$_POST['userIC'];
-$room=$_POST['room'];
+$userName=$_POST['userName'];
+$room_type=$_POST['room_type'];
 
-$update1= "UPDATE booking set status='".$room."' WHERE guestIC='".$userIC."'";
+$update1= "UPDATE booking set status='".$room_type."' WHERE guestIC='".$userIC."'";
 
-$update2= "UPDATE booking set status='".$room."' WHERE userIC='".$userIC."'";
+$update2= "UPDATE booking set status='".$room_type."' WHERE userIC='".$userIC."'";
 
 $result1 = $conn->query($update1);
 $result2 = $conn->query($update2);
 
 if($result1)
 {
-	if($room!='Regular')
+	if($room_type!='Regular')
 		{
 			echo "<script src='room1_checkIn.js'></script>";
-			echo"<script>alert('This user $userIC room is set to $room ')</script>";
+			echo"<script>alert('This user $userName room is set to $room_type ')</script>";
 
 			header("refresh:2 url=index_admin.php");
 		}
 
 	else
 		{ 
-			echo"<script>alert('This user $userIC room is set to $room ')</script>
+			echo"<script>alert('This user $userName room is set to $room_type ')</script>
 			<script src='room2_checkIn.js'></script>";
 			header("refresh:2 url=index_admin.php");
 		}
@@ -44,16 +45,16 @@ if($result1)
 
 else if($result2)
 {
-	if($room!='Regular')
+	if($room_type!='Regular')
 		{
 			echo "<script src='room1_checkIn.js'></script>";
-			echo"<script>alert('This user $userIC room is set to $room ')</script>";
+			echo"<script>alert('This user $userName room is set to $room_type ')</script>";
 			header("refresh:2 url=index_admin.php");
 		}
 	else
 		{ 
 			echo "<script src='room2_checkIn.js'></script>";	
-			echo"<script>alert('This user $userIC room is set to $room ')</script>";
+			echo"<script>alert('This user $userName room is set to $room_type ')</script>";
 			header("refresh:2 url=index_admin.php");
 		}
 }

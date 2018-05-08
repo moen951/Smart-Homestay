@@ -225,13 +225,16 @@ $(document).ready(function()
       
       <ul class="nav navbar-nav">        
         <li><a href="index.php">Home </a></li>
-        <li><a href="rooms-tariff.php">Rooms & Tariff</a></li>        
-        <li><a href="introduction.php">Introduction</a></li>
+        <li><a href="rooms-tariff.php">Rooms & Tariff</a></li> 
+        <li><a href="booking.php">Reserve Now</a></li> 
+        <li><a href="contact.php">Contact</a></li>      
+        
         
            <?php
                  if(isset($_SESSION['userIC']))
                  {
                  ?> 
+                    <li><a href="profile.php">Profile</a></li>
                    <li><a href="logout.inc.php">Logout</a></li>
                   
                  <?php
@@ -245,8 +248,8 @@ $(document).ready(function()
                     <?php
                    }
                 ?>
-        <li><a href="booking.php">Reserve Now</a></li>
-        <li><a href="contact.php">Contact</a></li>
+        
+        
       </ul>
     </div><!-- Wnavbar-collapse -->
   </div><!-- container-fluid -->
@@ -264,7 +267,7 @@ $(document).ready(function()
     $userNameDisplay= $row['username'];
     
    
-      echo "Welcome Back $userNameDisplay";
+      echo "<br><br><h3 align=center >Welcome Back $userNameDisplay </h3>";
   
       } 
 ?>
