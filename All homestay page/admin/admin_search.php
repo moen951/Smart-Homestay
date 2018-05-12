@@ -5,28 +5,30 @@ include 'header_admin.php';
 
 ?>
 
+
+
 <style type="text/css">
-table {
+#insert_form table {
     margin:5px auto; width:50%
     border-collapse: collapse;
     background-color: #ffffff;
     opacity: 0.7;
 }
 
-table, td, th {
+#insert_form table, td, th {
     border: 3px solid black;
     align-items: center;
 }
-th, td {
+#insert_form th, td {
     padding: 15px;
     text-align: center;
     color: black;
 }
-th {
+#insert_form th {
     
     color: black;
 }
-td:hover{background-color:#bfa145}	
+#insert_form td:hover{background-color:#bfa145}	
 
 
 	
@@ -87,7 +89,7 @@ $sql2 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE st
 
 if($sql1->num_rows)
 {
-echo"<form  action='checkIn.php' method='POST'>
+echo"<form  action='checkIn.php' method='POST' id='insert_form'>
 				<table width=auto height='209' border='1'>
   				<tr>
   				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
@@ -145,7 +147,7 @@ echo"<form  action='checkIn.php' method='POST'>
 
 	else if($sql2->num_rows)
 		{
-		echo"<form  action='checkIn.php' method='POST'>
+		echo"<form  action='checkIn.php' method='POST' id='insert_form'>
 						<table width='auto' height='209' border='1'>
 		  				<tr>
 		  				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
@@ -215,7 +217,8 @@ echo"<form  action='checkIn.php' method='POST'>
 		echo "<script>
 						alert('Record Not Found')
 						
-					</script>";
+					</script>
+					<div id='calendar'></div>";
 			//header("refresh:0 url=admin_search.php");
 			
 

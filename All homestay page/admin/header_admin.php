@@ -241,7 +241,8 @@ $(document).ready(function()
     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
       
       <ul class="nav navbar-nav">        
-        <li><a href="index_admin.php">Home </a></li>
+        <li><a href="index_admin.php">Home </a></li> 
+        <li><a href="walkIn_form.php">Walk-In </a></li>
         <li><a href="checkOutView.php">Check Out </a></li>
         
            <?php
@@ -279,7 +280,7 @@ $(document).ready(function()
     $userNameDisplay= $row['username'];
     
    
-      echo "Welcome Back $userNameDisplay";
+     echo "<br><br><h3 align=center >Welcome Back $userNameDisplay </h3><br><br>";
   
       } 
 ?>
