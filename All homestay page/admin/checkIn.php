@@ -17,9 +17,9 @@ $userIC=$_POST['userIC'];
 $userName=$_POST['userName'];
 $room_type=$_POST['room_type'];
 
-$update1= "UPDATE booking set status='".$room_type."' WHERE guestIC='".$userIC."'";
+$update1= "UPDATE booking set status='Check In' WHERE guestIC='".$userIC."'";
 
-$update2= "UPDATE booking set status='".$room_type."' WHERE userIC='".$userIC."'";
+$update2= "UPDATE booking set status='Check In' WHERE userIC='".$userIC."'";
 
 $result1 = $conn->query($update1);
 $result2 = $conn->query($update2);

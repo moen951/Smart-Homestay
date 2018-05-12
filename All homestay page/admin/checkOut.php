@@ -32,7 +32,7 @@ if($result1)
 			echo"<script src='room1_checkOut.js'></script>";
 			echo"<script>alert('This user $userName  is check out from $room_type ')</script>";
 
-			header("refresh:2 url=index_admin.php");
+			header("refresh:2 url=checkOutReceipt.php?userIC=$userIC");
 		}
 
 	else
@@ -42,7 +42,7 @@ if($result1)
 			echo"<script>alert('This user $userName is check out from $room_type ')</script>";
 
 		
-			header("refresh:2 url=index_admin.php");
+			header("refresh:2 url=checkOutReceipt.php?userIC=$userIC");
 		}
 
 }

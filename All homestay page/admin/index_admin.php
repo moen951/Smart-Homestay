@@ -10,7 +10,7 @@
 
 <div class="search_form">
 
-<h3>Enter info below:</h3>
+<h3>Enter info below to perform check in:</h3>
 
 <br>
 <form method="POST" action="admin_search.php">

@@ -39,10 +39,10 @@ td:hover{background-color:#bfa145}
 
 <div class="search_form">
 
-<h3>Enter info below to perform check out:</h3>
+<h3>Enter info below to search receipt:</h3>
 
 <br>
-<form method="POST" action="checkOutViewTable.php">
+<form method="GET" action="checkOutReceipt.php">
 <tr>
 <td>
 <b>Identity Card Number(NRIC):</b><input type="text" name="userIC" style="width:150px;height:20px" ><br>
@@ -67,21 +67,21 @@ td:hover{background-color:#bfa145}
 <?php
 
 
-$userIC=$_POST['userIC'];
+$userIC=$_GET['userIC'];
 
 
 
 // $room1="Deluxe";
 // $room2="Regular";
-$status="Check In";
+$status="Check Out";
 
 $sql1 = mysqli_query($conn,'SELECT  g.*, b.* FROM  guests g , booking b WHERE status = "'.$status.'" AND  b.guestIC=g.guestIC AND g.guestIC="'.$userIC.'"');
 
 $sql2 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE status = "'.$status.'" AND  b.guestIC=p.userIC AND p.userIC="'.$userIC.'"');
 
-$sql3 = mysqli_query($conn,'SELECT  g.*, b.* FROM  guests g , booking b WHERE status = "'.$status.'" AND  b.guestIC=g.guestIC AND g.guestIC="'.$userIC.'"');
+// $sql3 = mysqli_query($conn,'SELECT  g.*, b.* FROM  guests g , booking b WHERE status = "'.$status.'" AND  b.guestIC=g.guestIC AND g.guestIC="'.$userIC.'"');
 
-$sql4 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE status = "'.$status.'" AND  b.guestIC=p.userIC AND p.userIC="'.$userIC.'"');
+// $sql4 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE status = "'.$status.'" AND  b.guestIC=p.userIC AND p.userIC="'.$userIC.'"');
 
 
 
@@ -93,7 +93,7 @@ $sql4 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE st
 
 if($sql1->num_rows)
 {
-echo"<form  action='checkOut.php' method='POST'>
+echo"<form  action='' method='POST'>
 				<table width=auto height='209' border='1'>
   				<tr>
   				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
@@ -110,7 +110,7 @@ echo"<form  action='checkOut.php' method='POST'>
 		while($row = mysqli_fetch_array($sql1))
 		{
 	
-		$icno = $_POST['userIC'];
+		$icno = $_GET['userIC'];
 		$fname = $row['firstName'].' '.$row['lastName'];
 		$address = $row['address'].', '.$row['postcode'].', '.$row['city'].', '.$row['state'];
 		$phone = $row['phoneNum'];
@@ -134,7 +134,7 @@ echo"<form  action='checkOut.php' method='POST'>
 				<input type='hidden' name='room_type' value=$room_type>		
 	            	
 		       	            
-		            <br><br><input type='submit' class='btn btn-default' value='Check Out'>
+		            <br><br><input type='submit' class='btn btn-default' value='Receipt'>
 				
 							
 				</td>
@@ -147,7 +147,8 @@ echo"<form  action='checkOut.php' method='POST'>
 				
 	}
 
-	else if($sql2->num_rows)
+
+else if($sql2->num_rows)
 		{
 		echo"<form  action='checkOut.php' method='POST'>
 						<table width='auto' height='209' border='1'>
@@ -166,7 +167,7 @@ echo"<form  action='checkOut.php' method='POST'>
 				while($row = mysqli_fetch_array($sql2))
 				{
 			
-				$icno = $_POST['userIC'];
+				$icno = $_GET['userIC'];
 				$fname = $row['firstName'].' '.$row['lastName'];
 				$address = $row['address'].', '.$row['postcode'].', '.$row['city'].', '.$row['state'];
 				$phone = $row['phoneNum'];
@@ -207,129 +208,6 @@ echo"<form  action='checkOut.php' method='POST'>
 
 						
 			}
-
-// 	else if($sql3->num_rows)
-// 		{
-// 		echo"<form  action='checkOut.php' method='POST'>
-// 						<table width='auto' height='209' border='1'>
-// 		  				<tr>
-// 		  				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
-// 		    			<th  align='center'>FULLNAME</th>
-// 		    			<th  align='center'>ADDRESS</th>
-// 		    			<th  align='center'>PHONE NUMBER</th>
-// 		    			<th  align='center'>EMAIL</th>
-// 		    			<th  align='center'>RESERVE DATE</th>
-// 		    			<th  align='center'>ROOM TYPE</th>
-// 		    			<th  align='center'>OPTION</th>
-// 		    			</tr>";
-
-		    		
-// 				while($row = mysqli_fetch_array($sql3))
-// 				{
-			
-// 				$icno = $_POST['userIC'];
-// 				$fname = $row['firstName'].' '.$row['lastName'];
-// 				$address = $row['address'].', '.$row['postcode'].', '.$row['city'].', '.$row['state'];
-// 				$phone = $row['phoneNum'];
-// 				$email = $row['email'];
-// 				$date = 'From '.$row['startDate'].' until '.$row['endDate'];				
-// 				$room_type=$row['room_type'];
-				
-
-				
-// 					echo"
-// 		    			<tr>
-// 		    			<td>$icno</td>
-// 		    			<td>$fname</td>
-// 		   				<td>$address</td>
-// 		   				<td>$phone</td>
-// 		   				<td>$email</td>
-// 		   				<td>$date</td>		   				
-// 						<td>$room_type</td>
-		   			
-		   				
-		   				
-// 						<td align='center'>
-// 						<input type='hidden' name='userName' value=$fname>
-// 						<input type='hidden' name='userIC' value=$icno>
-// 						<input type='hidden' name='room_type' value=$room_type>
-				            
-// 				            <br><br><input type='submit' class='btn btn-default' value='Check Out'>
-						
-// 						</td>
-// 						</tr>";
-					
-// 				}
-// 						"</table>
-						
-// 						</form>";
-
-						
-// 			}
-
-// else if($sql4->num_rows)
-// 		{
-// 		echo"<form  action='checkOut.php' method='POST'>
-// 						<table width='auto' height='209' border='1'>
-// 		  				<tr>
-// 		  				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
-// 		    			<th  align='center'>FULLNAME</th>
-// 		    			<th  align='center'>ADDRESS</th>
-// 		    			<th  align='center'>PHONE NUMBER</th>
-// 		    			<th  align='center'>EMAIL</th>
-// 		    			<th  align='center'>RESERVE DATE</th>
-// 		    			<th  align='center'>ROOM TYPE</th>
-// 		    			<th  align='center'>OPTION</th>
-// 		    			</tr>";
-
-		    		
-// 				while($row = mysqli_fetch_array($sql4))
-// 				{
-			
-// 				$icno = $_POST['userIC'];
-// 				$fname = $row['firstName'].' '.$row['lastName'];
-// 				$address = $row['address'].', '.$row['postcode'].', '.$row['city'].', '.$row['state'];
-// 				$phone = $row['phoneNum'];
-// 				$email = $row['email'];
-// 				$date = 'From '.$row['startDate'].' until '.$row['endDate'];				
-// 				$room_type=$row['room_type'];
-
-
-
-				
-// 					echo"
-// 		    			<tr>
-// 		    			<td>$icno</td>
-// 		    			<td>$fname</td>
-// 		   				<td>$address</td>
-// 		   				<td>$phone</td>
-// 		   				<td>$email</td>
-// 		   				<td>$date</td>		   				
-// 						<td>$room_type</td>
-		   			
-		   				
-		   				
-// 						<td align='center'>
-// 						<input type='hidden' name='userName' value=$fname>
-// 						<input type='hidden' name='userIC' value=$icno>
-// 						<input type='hidden' name='room_type' value=$room_type>
-				            
-// 				            <br><br><input type='submit' class='btn btn-default' value='Check Out'>
-						
-// 						</td>
-// 						</tr>";
-					
-// 				}
-// 						"</table>
-						
-// 						</form>";
-
-						
-// 			}
-
-
-
-
 	else
 	{
 		echo "<script>
@@ -340,9 +218,8 @@ echo"<form  action='checkOut.php' method='POST'>
 			
 
 				$sql1->close();	
-				$sql2->close();	
-				// $sql3->close();	
-				// $sql4->close();	
+				
+				
 	} 
 	
 	
