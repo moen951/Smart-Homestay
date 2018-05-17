@@ -43,7 +43,7 @@ include 'header_admin.php';
 
 <div class="search_form">
 
-<h3>Enter info below:</h3>
+<h3>Enter info below to perform check in:</h3>
 
 <br>
 <form method="POST" action="admin_search.php">
@@ -75,11 +75,13 @@ $userIC=$_POST['userIC'];
 
 
 
-$status="Empty";
+//$status="Reserve";
 
-$sql1 = mysqli_query($conn,'SELECT  g.*, b.* FROM  guests g , booking b WHERE status = "'.$status.'" AND  b.guestIC=g.guestIC AND g.guestIC="'.$userIC.'"');
+// $sql1 = mysqli_query($conn,'SELECT  g.*, b.* FROM  guests g , booking b WHERE status = "'.$status.'" AND  b.guestIC=g.guestIC AND g.guestIC="'.$userIC.'"');
 
-$sql2 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE status = "'.$status.'" AND  b.userIC=p.userIC AND p.userIC="'.$userIC.'"');
+$sql1 = mysqli_query($conn,'SELECT  g.*, b.* FROM  guests g , booking b WHERE b.guestIC=g.guestIC AND g.guestIC="'.$userIC.'"');
+
+$sql2 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE b.userIC=p.userIC AND p.userIC="'.$userIC.'"');
 
 
 
@@ -89,7 +91,33 @@ $sql2 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE st
 
 if($sql1->num_rows)
 {
-echo"<form  action='checkIn.php' method='POST' id='insert_form'>
+
+
+		while($row = mysqli_fetch_array($sql1))
+		{
+	
+		$icno = $_POST['userIC'];
+		$fname = $row['firstName'].' '.$row['lastName'];
+		$address = $row['address'].', '.$row['postcode'].', '.$row['city'].', '.$row['state'];
+		$phone = $row['phoneNum'];
+		$email = $row['email'];
+		$date = 'From '.$row['startDate'].' until '.$row['endDate'];
+		$num_of_person=$row['num_of_person'];
+		$room_type=$row['room_type'];
+		$current_status=$row['status'];
+
+		if($current_status!="Reserve")
+		{
+			echo "<script>
+						alert('This $fname has already Check In')
+						
+					</script>
+
+					<div id='calendar'></div>";
+		}
+		else{
+
+			echo"<form  action='checkIn.php' method='POST' id='insert_form'>
 				<table width=auto height='209' border='1'>
   				<tr>
   				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
@@ -104,18 +132,6 @@ echo"<form  action='checkIn.php' method='POST' id='insert_form'>
     			<th width='150' align='center'>OPTION</th>
     			</tr>";
 
-		while($row = mysqli_fetch_array($sql1))
-		{
-	
-		$icno = $_POST['userIC'];
-		$fname = $row['firstName'].' '.$row['lastName'];
-		$address = $row['address'].', '.$row['postcode'].', '.$row['city'].', '.$row['state'];
-		$phone = $row['phoneNum'];
-		$email = $row['email'];
-		$date = 'From '.$row['startDate'].' until '.$row['endDate'];
-		$num_of_person=$row['num_of_person'];
-		$room_type=$row['room_type'];
-		
 			echo"
     			<tr>
     			<td>$icno</td>
@@ -137,6 +153,10 @@ echo"<form  action='checkIn.php' method='POST' id='insert_form'>
 							
 				</td>
 				</tr>";
+		}
+
+
+		
 			
 		}
 				"</table>
@@ -147,7 +167,33 @@ echo"<form  action='checkIn.php' method='POST' id='insert_form'>
 
 	else if($sql2->num_rows)
 		{
-		echo"<form  action='checkIn.php' method='POST' id='insert_form'>
+	
+				while($row = mysqli_fetch_array($sql2))
+				{
+			
+				$icno = $_POST['userIC'];
+				$fname = $row['firstName'].' '.$row['lastName'];
+				$address = $row['address'].', '.$row['postcode'].', '.$row['city'].', '.$row['state'];
+				$phone = $row['phoneNum'];
+				$email = $row['email'];
+				$date = 'From '.$row['startDate'].' until '.$row['endDate'];
+				$num_of_person=$row['num_of_person'];
+				$room_type=$row['room_type'];
+				$current_status=$row['status'];
+
+				if($current_status!="Reserve")
+					{
+						echo "<script>
+									alert('This $fname has already Check In')
+									
+								</script>
+
+								<div id='calendar'></div>";
+					}
+
+				else{
+
+						echo"<form  action='checkIn.php' method='POST' id='insert_form'>
 						<table width='auto' height='209' border='1'>
 		  				<tr>
 		  				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
@@ -162,20 +208,6 @@ echo"<form  action='checkIn.php' method='POST' id='insert_form'>
 		    			</tr>";
 
 		    		
-				while($row = mysqli_fetch_array($sql2))
-				{
-			
-				$icno = $_POST['userIC'];
-				$fname = $row['firstName'].' '.$row['lastName'];
-				$address = $row['address'].', '.$row['postcode'].', '.$row['city'].', '.$row['state'];
-				$phone = $row['phoneNum'];
-				$email = $row['email'];
-				$date = 'From '.$row['startDate'].' until '.$row['endDate'];
-				$num_of_person=$row['num_of_person'];
-				$room_type=$row['room_type'];
-
-
-				
 					echo"
 		    			<tr>
 		    			<td>$icno</td>
@@ -201,6 +233,8 @@ echo"<form  action='checkIn.php' method='POST' id='insert_form'>
 						
 						</td>
 						</tr>";
+				}
+					
 					
 				}
 						"</table>

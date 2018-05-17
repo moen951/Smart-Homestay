@@ -93,7 +93,7 @@ $sql2 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE st
 
 if($sql1->num_rows)
 {
-echo"<form  action='' method='POST'>
+echo"<form  action='checkOutReceipt.php' method='GET'>
 				<table width=auto height='209' border='1'>
   				<tr>
   				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
@@ -129,9 +129,9 @@ echo"<form  action='' method='POST'>
 				<td>$room_type</td>
    				
 				<td align='center'>
-				<input type='hidden' name='userName' value=$fname>
+				
 				<input type='hidden' name='userIC' value=$icno>
-				<input type='hidden' name='room_type' value=$room_type>		
+						
 	            	
 		       	            
 		            <br><br><input type='submit' class='btn btn-default' value='Receipt'>
@@ -150,7 +150,7 @@ echo"<form  action='' method='POST'>
 
 else if($sql2->num_rows)
 		{
-		echo"<form  action='' method='POST'>
+		echo"<form  action='checkOutReceipt.php' method='GET'>
 						<table width='auto' height='209' border='1'>
 		  				<tr>
 		  				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
@@ -191,9 +191,9 @@ else if($sql2->num_rows)
 		   				
 		   				
 						<td align='center'>
-						<input type='hidden' name='userName' value=$fname>
+						
 						<input type='hidden' name='userIC' value=$icno>
-						<input type='hidden' name='room_type' value=$room_type>
+					
 				            
 				            
 				            <br><br><input type='submit' class='btn btn-default' value='Receipt'>

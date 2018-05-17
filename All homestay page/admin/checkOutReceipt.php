@@ -66,6 +66,17 @@ td:hover{background-color:#bfa145}
 <div class="update_form">
 <?php
 
+function dateDifference($date_1 , $date_2 , $differenceFormat = '%d' )
+		{
+		    $datetime1 = date_create($date_1);
+		    $datetime2 = date_create($date_2);
+		    
+		    $interval = date_diff($datetime1, $datetime2);
+		    
+		    return $interval->format($differenceFormat);
+		    
+		}
+
 
 $userIC=$_GET['userIC'];
 
@@ -93,19 +104,8 @@ $sql2 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE st
 
 if($sql1->num_rows)
 {
-echo"<form  action='' method='POST'>
-				<table width=auto height='209' border='1'>
-  				<tr>
-  				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
-    			<th  align='center'>FULLNAME</th>
-    			<th  align='center'>ADDRESS</th>
-    			<th  align='center'>PHONE NUMBER</th>
-    			<th  align='center'>EMAIL</th>
-    			<th  align='center'>RESERVE DATE</th>
-    			<th  align='center'>ROOM TYPE</th>
 
-    			<th width='150' align='center'>OPTION</th>
-    			</tr>";
+
 
 		while($row = mysqli_fetch_array($sql1))
 		{
@@ -117,53 +117,80 @@ echo"<form  action='' method='POST'>
 		$email = $row['email'];
 		$date = 'From '.$row['startDate'].' until '.$row['endDate'];
 		$room_type=$row['room_type'];
-		
-			echo"
-    			<tr>
-    			<td>$icno</td>
-    			<td>$fname</td>
-   				<td>$address</td>
-   				<td>$phone</td>
-				<td>$email</td>
-				<td>$date</td>
-				<td>$room_type</td>
-   				
-				<td align='center'>
-				<input type='hidden' name='userName' value=$fname>
-				<input type='hidden' name='userIC' value=$icno>
-				<input type='hidden' name='room_type' value=$room_type>		
-	            	
-		       	            
-		            <br><br><input type='submit' class='btn btn-default' value='Receipt'>
+		$total_day=dateDifference($row['startDate'],$row['endDate']);
+
+		if($room_type!="Regular"){
+
+				$price_room = mysqli_query($conn,'SELECT * FROM room WHERE room_type = "'.$room_type.'" ');
+				while($row_price = mysqli_fetch_array($price_room))
+				{
+					$price= $row_price['price'];
+					$total_price=$total_day* floatval($price);
+
+					echo"
+
 				
-							
-				</td>
-				</tr>";
+				<div align='justify'>
+    			<br><h3 align='center'>Receipt</h3><br>
+								
+				<ul align='center' >
+  				<li>IDENTITY CARD NUMBER(NRIC): $icno</li><br>
+  				<li>FULLNAME: $fname</li><br>
+				<li>ADDRESS: $address</li><br>
+				<li>PHONE NUMBER: $phone</li><br>
+				<li>EMAIL: $email</li><br>
+				<li>DATE: $date</li><br>
+				<li>ROOM TYPE: $room_type</li><br>
+				<li>TOTAL PRICE: RM $total_price</li><br>
+				<a href='' class='btn btn-default>
+				<img src='icon/print.png' height= 27px; width= 27px;><br>Print Receipt</a>
+				</ul>
+				</div>
+
+				";
+				}
+			}
+
+		else{
+			$price_room = mysqli_query($conn,'SELECT * FROM room WHERE room_type = "'.$room_type.'" ');
+				while($row_price = mysqli_fetch_array($price_room))
+				{
+					$price= $row_price['price'];
+					$total_price=$total_day* floatval($price);
+
+					echo"
+
+				
+				<div align='justify'>
+    			<br><h3 align='center'>Receipt</h3><br>
+								
+				<ul align='center' >
+  				<li>IDENTITY CARD NUMBER(NRIC): $icno</li><br>
+  				<li>FULLNAME: $fname</li><br>
+				<li>ADDRESS: $address</li><br>
+				<li>PHONE NUMBER: $phone</li><br>
+				<li>EMAIL: $email</li><br>
+				<li>DATE: $date</li><br>
+				<li>ROOM TYPE: $room_type</li><br>
+				<li>TOTAL PRICE: RM $total_price</li><br>
+				<a href='' class='btn btn-default>
+				<img src='icon/print.png' height= 27px; width= 27px;><br>Print Receipt</a>
+				</ul>
+				</div>
+
+				";
+				}
+			}	
 			
 		}
-				"</table>
 				
-				</form>";
 				
 	}
 
 
 else if($sql2->num_rows)
 		{
-		echo"<form  action='checkOut.php' method='POST'>
-						<table width='auto' height='209' border='1'>
-		  				<tr>
-		  				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
-		    			<th  align='center'>FULLNAME</th>
-		    			<th  align='center'>ADDRESS</th>
-		    			<th  align='center'>PHONE NUMBER</th>
-		    			<th  align='center'>EMAIL</th>
-		    			<th  align='center'>RESERVE DATE</th>
-		    			<th  align='center'>ROOM TYPE</th>
-		    			<th  align='center'>OPTION</th>
-		    			</tr>";
-
-		    		
+		
 				while($row = mysqli_fetch_array($sql2))
 				{
 			
@@ -174,40 +201,78 @@ else if($sql2->num_rows)
 				$email = $row['email'];
 				$date = 'From '.$row['startDate'].' until '.$row['endDate'];
 				$room_type=$row['room_type'];
+				$total_day=dateDifference($row['startDate'],$row['endDate']);
+
+					if($room_type!="Regular"){
+
+							$price_room = mysqli_query($conn,'SELECT * FROM room WHERE room_type = "'.$room_type.'" ');
+							while($row_price = mysqli_fetch_array($price_room))
+							{
+								$price= $row_price['price'];
+								$total_price=$total_day* floatval($price);
+
+								echo"
+
+							
+							<div align='justify'>
+			    			<br><h3 align='center'>Receipt</h3><br>
+											
+							<ul align='center' >
+			  				<li>IDENTITY CARD NUMBER(NRIC): $icno</li><br>
+			  				<li>FULLNAME: $fname</li><br>
+							<li>ADDRESS: $address</li><br>
+							<li>PHONE NUMBER: $phone</li><br>
+							<li>EMAIL: $email</li><br>
+							<li>DATE: $date</li><br>
+							<li>ROOM TYPE: $room_type</li><br>
+							<li>TOTAL PRICE: RM $total_price</li><br>
+							<a href='' class='btn btn-default>
+							<img src='icon/print.png' height= 27px; width= 27px;><br>Print Receipt</a>
+							</ul>
+							</div>
+
+							";
+							}
+
+							
 
 
+					}
+					else{
+						$price_room = mysqli_query($conn,'SELECT * FROM room WHERE room_type = "'.$room_type.'" ');
+							while($row_price = mysqli_fetch_array($price_room))
+							{
+								$price= $row_price['price'];
+								$total_price=$total_day* floatval($price);
 
-				
-					echo"
-		    			<tr>
-		    			<td>$icno</td>
-		    			<td>$fname</td>
-		   				<td>$address</td>
-		   				<td>$phone</td>
-		   				<td>$email</td>
-		   				<td>$date</td>
-						<td>$room_type</td>
-		   			
-		   				
-		   				
-						<td align='center'>
-						<input type='hidden' name='userName' value=$fname>
-						<input type='hidden' name='userIC' value=$icno>
-						<input type='hidden' name='room_type' value=$room_type>
-				            
-				            
-				            <br><br><input type='submit' class='btn btn-default' value='Check Out'>
-						
-						</td>
-						</tr>";
+								echo"
+
+							
+							<div align='justify'>
+			    			<br><h3 align='center'>Receipt</h3><br>
+											
+							<ul align='center' >
+			  				<li>IDENTITY CARD NUMBER(NRIC): $icno</li><br>
+			  				<li>FULLNAME: $fname</li><br>
+							<li>ADDRESS: $address</li><br>
+							<li>PHONE NUMBER: $phone</li><br>
+							<li>EMAIL: $email</li><br>
+							<li>DATE: $date</li><br>
+							<li>ROOM TYPE: $room_type</li><br>
+							<li>TOTAL PRICE: RM $total_price</li><br>
+							<a href='' class='btn btn-default>
+							<img src='icon/print.png' height= 27px; width= 27px;><br>Print Receipt</a>
+							</ul>
+							</div>
+
+							";
+							}
 					
+						}
+							
 				}
-						"</table>
-						
-						</form>";
 
-						
-			}
+		}
 	else
 	{
 		echo "<script>

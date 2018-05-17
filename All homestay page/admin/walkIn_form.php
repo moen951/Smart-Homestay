@@ -49,7 +49,7 @@
      
 
       <div class="col-sm-5 col-md-4">
-      <h3 align="center">Walk-In Form</h3>
+      <h3 align="center">Register Form</h3>
           <form role="form" class="wowload fadeInRight" action= "insert_admin.php" method="POST" >
 
             

@@ -242,7 +242,7 @@ $(document).ready(function()
       
       <ul class="nav navbar-nav">        
         <li><a href="index_admin.php">Home </a></li> 
-        <li><a href="walkIn_form.php">Walk-In </a></li>
+        <li><a href="walkIn_form.php">Register </a></li>
         <li><a href="checkOutView.php">Check Out </a></li>
         <li><a href="checkOutReceipt_All.php">Receipt </a></li>
         
