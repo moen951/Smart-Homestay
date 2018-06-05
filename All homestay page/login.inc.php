@@ -33,7 +33,7 @@ if($row['pword'] == $pword_hash)
 
 }else {
   echo'<script> window.alert("Your username or password are incorrect!");</script>';
-  //header("refresh:0 url=index.php");
+  header("refresh:0 url=index.php");
 }
 
 
