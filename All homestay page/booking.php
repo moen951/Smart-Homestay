@@ -1,5 +1,8 @@
 <?php include 'header.php';?>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script src="bookingGuest.js"></script>
+<script src="bookingUser.js"></script>
  <script type="text/javascript">
     // Launch this when file was fully loaded
     $(document).ready(function() {
@@ -76,7 +79,7 @@ if(isset($_SESSION['userIC']))
 
           <div class='col-sm-5 col-md-4'>
 
-              <form role='form' class='wowload fadeInRight' action= 'insert.php' method='POST' >
+              <form role='form' class='wowload fadeInRight' >
 
 
                 <div class='form-group'>
@@ -92,22 +95,22 @@ if(isset($_SESSION['userIC']))
                       </div></div>
                   </div>
                 <div class='form-group'>
-                      <input type='text' class='form-control'  placeholder='Identity Card Number(NRIC) ' name='userIC' value= '".$userIC."' required>
+                      <input type='text' class='form-control'  placeholder='Identity Card Number(NRIC) ' id='userIC' value= '".$userIC."' required>
                   </div>
                   <div class='form-group'>
-                      <input type='text' class='form-control'  placeholder='First Name' name='firstName' value='".$fname."' required>
+                      <input type='text' class='form-control'  placeholder='First Name' id='firstName' value='".$fname."' required>
                   </div>
                   <div class='form-group'>
-                      <input type='text' class='form-control'  placeholder='Last Name' name='lastName' value='".$lname."' required>
+                      <input type='text' class='form-control'  placeholder='Last Name' id='lastName' value='".$lname."' required>
                   </div>
                   <div class='form-group'>
-                      <input type='text' class='form-control'  placeholder'Address' name='address' value= '".$address."' required>
+                      <input type='text' class='form-control'  placeholder'Address' id='address' value= '".$address."' required>
                   </div>
                   <div class='form-group'>
-                      <input type='text' class='form-control'  placeholder='Postcode' name='postcode' value='".$postcode."' required>
+                      <input type='text' class='form-control'  placeholder='Postcode' id='postcode' value='".$postcode."' required>
                   </div>
                   <div class='form-group'>
-                      <input type='text' class='form-control'  placeholder='City' name='city'  value='".$city."' required>
+                      <input type='text' class='form-control'  placeholder='City' id='city'  value='".$city."' required>
                   </div>
                   <div class='form-group'>
                       <div class='row'>
@@ -119,16 +122,16 @@ if(isset($_SESSION['userIC']))
                        <option id='em'>East Malaysia</option>
                       </select>
                       <br>
-                      <select id='state' class='form-control' name='state' value= '".$state."' required></select>
+                      <select id='state' class='form-control' id='state' value= '".$state."' required></select>
                       
                       </div>
                     </div>
                   </div>
                   <div class='form-group'>
-                      <input type='email' class='form-control'  placeholder='Email' name='email' value= '".$email."' required>
+                      <input type='email' class='form-control'  placeholder='Email' id='email' value= '".$email."' required>
                   </div>
                   <div class='form-group'>
-                      <input type='Phone' class='form-control'  placeholder='Phone' name='phoneNum' value= '".$phoneNum."' required>
+                      <input type='Phone' class='form-control'  placeholder='Phone Number' id='phoneNum' value= '".$phoneNum."' required>
                   </div>         
                     </div>
                   </div>
@@ -138,7 +141,7 @@ if(isset($_SESSION['userIC']))
                   <div class='row'>
                         
                   <div class='col-xs-6'>
-                  <select class='form-control' name='num_of_person' required>
+                  <select class='form-control' id='num_of_person' required>
                     <option>No. of Adult</option>
                     <option>1</option>
                     <option>2</option>
@@ -153,7 +156,7 @@ if(isset($_SESSION['userIC']))
                   <div class='row'>
                         
                   <div class='col-xs-6'>
-                  <select class='form-control' name='room' required>
+                  <select class='form-control' id='room' required>
                     <option>Room Type</option>
                     <option>Deluxe</option>
                     <option>Regular</option>
@@ -165,20 +168,20 @@ if(isset($_SESSION['userIC']))
                   <div class='row'>
                     <div class='col-xs-6'>
                       <b>Start Date</b>
-                    <input type='date' name='startDate' style='width: 160px; height: 30px' >
+                    <input type='date' id='startDate' style='width: 160px; height: 30px' >
                     <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('startDate')[0].setAttribute('min', today);</script>
                   </div>
                  <b>    </b><b>     </b>
                   <div class='col-xs-6'>
                      <b>End Date</b>
-                    <input type='date' name='endDate' style='width: 160px; height: 30px' >
+                    <input type='date' id='endDate' style='width: 160px; height: 30px' >
                     <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('endDate')[0].setAttribute('min', today);</script>
                   </div>
                  
                 </div>
               </div>
                   
-                  <button class='btn btn-default' >Save</button>
+                  <input  class='btn btn-default' id='submit' onclick='bookingUser()' type='button' value='Submit'>
               </form>    
           </div>
           </div>  
@@ -201,7 +204,7 @@ else
 
       <div class="col-sm-5 col-md-4">
       <h3>Reservation</h3>
-          <form role="form" class="wowload fadeInRight" action= "insert.php" method="POST" >
+          <form id="booking_form" name="booking_form" role="form" class="wowload fadeInRight" >
 
             
             <div class="form-group">
@@ -217,22 +220,22 @@ else
                   </div></div>
               </div>
             <div class="form-group">
-                  <input type="text" class="form-control"  placeholder="Identity Card Number(NRIC) " name="guestIC" required>
+                  <input type="text" class="form-control"  placeholder="Identity Card Number(NRIC) " name="guestIC" id="guestIC" required>
               </div>
               <div class="form-group">
-                  <input type="text" class="form-control"  placeholder="First Name" name="firstName" required>
+                  <input type="text" class="form-control"  placeholder="First Name" name="firstName" id="firstName" required>
               </div>
               <div class="form-group">
-                  <input type="text" class="form-control"  placeholder="Last Name" name="lastName" required>
+                  <input type="text" class="form-control"  placeholder="Last Name" name="lastName" id="lastName"required>
               </div>
               <div class="form-group">
-                  <input type="text" class="form-control"  placeholder="Address" name="address" required>
+                  <input type="text" class="form-control"  placeholder="Address" name="address" id="address" required>
               </div>
               <div class="form-group">
-                  <input type="text" class="form-control"  placeholder="Postcode" name="postcode" required>
+                  <input type="text" class="form-control"  placeholder="Postcode" name="postcode" id="postcode" required>
               </div>
               <div class="form-group">
-                  <input type="text" class="form-control"  placeholder="City" name="city" required>
+                  <input type="text" class="form-control"  placeholder="City" name="city" id="city" required>
               </div>
               <div class="form-group">
                   <div class="row">
@@ -244,23 +247,23 @@ else
                    <option id="em">East Malaysia</option>
                   </select>
                   <br>
-                  <select id="state" class="form-control" name="state" required></select>
+                  <select id="state" class="form-control" name="state" id="state" required></select>
                   
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                  <input type="email" class="form-control"  placeholder="Email" name="email" required>
+                  <input type="email" class="form-control"  placeholder="Email" name="email" id="email" required>
               </div>
               <div class="form-group">
-                  <input type="Phone" class="form-control"  placeholder="Phone" name="phoneNum" required>
+                  <input type="Phone" class="form-control"  placeholder="Phone Number" name="phoneNum" id="phoneNum" required>
               </div>        
 
               <div class="form-group">
                   <div class="row">
                         
                   <div class="col-xs-6">
-                  <select class="form-control" name="num_of_person" required>
+                  <select class="form-control" name="num_of_person" id="num_of_person" required>
                     <option>No. of Adult</option>
                     <option>1</option>
                     <option>2</option>
@@ -275,7 +278,7 @@ else
                   <div class="row">
                         
                   <div class="col-xs-6">
-                  <select class="form-control" name="room" required>
+                  <select class="form-control" name="room" id="room" required>
                     <option>Room Type</option>
                     <option>Deluxe</option>
                     <option>Regular</option>
@@ -287,20 +290,23 @@ else
                   <div class="row">
                     <div class="col-xs-6">
                       <b>Start Date</b>
-                    <input type='date' name='startDate' style='width: 160px; height: 30px' >
+                    <input type='date' name='startDate' id="startDate" style='width: 160px; height: 30px' >
                     <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('startDate')[0].setAttribute('min', today);</script>
                   </div>
                  <b>    </b><b>     </b>
                   <div class="col-xs-6">
                      <b>End Date</b>
-                    <input type='date' name='endDate' style='width: 160px; height: 30px' >
+                    <input type='date' name='endDate' id="endDate" style='width: 160px; height: 30px' >
                     <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('endDate')[0].setAttribute('min', today);</script>
                   </div>
                  
                 </div>
               </div>
               
-              <button class="btn btn-default" >Submit</button>
+              <!--
+                <button class="btn btn-default" >Submit</button>
+              -->
+              <input  class="btn btn-default" id="submit" onclick="bookingGuest()" type="button" value="Submit">
           </form>    
       </div>
       </div>  
