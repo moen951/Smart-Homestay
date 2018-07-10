@@ -5,7 +5,7 @@ include 'header_admin.php';
 
 ?>
 
-
+<script src="checkIn.js"></script>
 
 <style type="text/css">
 #insert_form table {
@@ -109,7 +109,7 @@ if($sql1->num_rows)
 		if($current_status!="Reserve")
 		{
 			echo "<script>
-						alert('This $fname has already Check In')
+						alert('This $fname has already Check In or already Check Out')
 						
 					</script>
 
@@ -117,7 +117,7 @@ if($sql1->num_rows)
 		}
 		else{
 
-			echo"<form  action='checkIn.php' method='POST' id='insert_form'>
+			echo"<form id='insert_form'>
 				<table width=auto height='209' border='1'>
   				<tr>
   				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
@@ -144,11 +144,11 @@ if($sql1->num_rows)
 				<td>$room_type</td>
    				
 				<td align='center'>
-				<input type='hidden' name='userIC' value=$icno>
-				<input type='hidden' name='userName' value=$fname>
-				<input type='hidden' name='room_type' value=$room_type>
+				<input type='hidden' id='userIC' value=$icno >
+				<input type='hidden' id='userName' value=$fname>
+				<input type='hidden' id='room_type' value=$room_type>
 
-		            <br><br><input type='submit' class='btn btn-default' value='Check In'>
+		            <br><br><input type='submit' class='btn btn-default' onclick='checkIn()' value='Check In'>
 				
 							
 				</td>
@@ -193,7 +193,7 @@ if($sql1->num_rows)
 
 				else{
 
-						echo"<form  action='checkIn.php' method='POST' id='insert_form'>
+						echo"<form id='insert_form'>
 						<table width='auto' height='209' border='1'>
 		  				<tr>
 		  				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
@@ -224,12 +224,12 @@ if($sql1->num_rows)
 		   				
 						<td align='center'>
 
-						<input type='hidden' name='userIC' value=$icno>
-						<input type='hidden' name='userName' value=$fname>
-						<input type='hidden' name='room_type' value=$room_type>
+						<input type='hidden' id='userIC' value=$icno>
+						<input type='hidden' id='userName' value=$fname>
+						<input type='hidden' id='room_type' value=$room_type>
 				            
 				            
-				            <br><br><input type='submit' class='btn btn-default' value='Check In'>
+				            <br><br><input type='submit' class='btn btn-default' onclick='checkIn()' value='Check In'>
 						
 						</td>
 						</tr>";

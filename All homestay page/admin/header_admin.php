@@ -281,7 +281,11 @@ $(document).ready(function()
     $userNameDisplay= $row['username'];
     
    
-     echo "<br><br><h3 align=center >Welcome Back $userNameDisplay </h3><br><br>";
+     //echo "<br><br><h3 align=center >Welcome Back $userNameDisplay </h3><br><br>";
+
+    echo "<br><br><h3 align=center >Welcome Back ";
+    echo ucwords($userNameDisplay); 
+    echo "</h3>";
   
       } 
 ?>
