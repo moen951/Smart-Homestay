@@ -4,8 +4,95 @@ include 'dbconnection.php';
 include 'header_admin.php';
 
 ?>
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 
-<script src="checkIn.js"></script>
+<script type="text/javascript">
+	//initialize Firebase
+			var config = {
+		    apiKey: "AIzaSyCppORwD4pq5jkp_E176yCvh2SeG9QTs40",
+		    authDomain: "smart-homestay.firebaseapp.com",
+		    databaseURL: "https://smart-homestay.firebaseio.com",
+		    projectId: "smart-homestay",
+		    storageBucket: "smart-homestay.appspot.com",
+		    messagingSenderId: "747776544912"
+		  };
+		  firebase.initializeApp(config);
+		  var ref = firebase.app().database().ref('House');
+</script>
+
+<script type="text/javascript">
+	function checkIn() 
+	{
+	var userIC = document.getElementById("userIC").value;
+	var firstName = document.getElementById("firstName").value;
+	var lastName = document.getElementById("lastName").value;
+	var room_type = document.getElementById("room_type").value;
+	
+	// Returns successful data submission message when the entered information is stored in database.
+	var dataString = 'userIC=' + userIC  + '&firstName=' + firstName + '&lastName=' + lastName + '&room_type=' + room_type;
+
+	// window.alert(firstName+" "+lastName);
+	
+if(room_type!='Regular')
+		{
+			var roomRef1 = ref.child('Room1');
+
+			roomRef1.update({
+			 '/status1': true,
+
+			 
+			})
+			.catch(function (err) {
+			 console.log('one of these updates failed', err);
+			});
+		}
+
+else
+		{ 
+			var roomRef2 = ref.child('Room2');
+
+			roomRef2.update({
+			 '/status2': true,
+
+			 
+			})
+			.catch(function (err) {
+			 console.log('one of these updates failed', err);
+			});
+		}
+
+
+		// AJAX code to submit form.
+		$.ajax({
+		type: "POST",
+		url: "checkIn.php",
+		data: dataString,
+		cache: false,
+		success: function(data) {
+
+		var userName = firstName+" "+lastName;
+
+		window.location.href='index_admin.php';
+
+		alert("This user " + userName + " room is set to " + room_type);
+
+
+		//alert("Your reservation has been place");
+
+		return false;
+		}
+		});
+
+	
+		
+
+		
+
+		
+	
+	return false;
+	}
+</script>
 
 <style type="text/css">
 #insert_form table {
