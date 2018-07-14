@@ -5,7 +5,7 @@ include 'header_admin.php';
 
 ?>
 
-<style type="text/css">
+<!-- <style type="text/css">
 table {
     margin:5px auto; width:50%
     border-collapse: collapse;
@@ -30,7 +30,7 @@ td:hover{background-color:#bfa145}
 
 
 	
-</style>
+</style> -->
 
 <section id="content" class="column-right">
 <p>
@@ -61,5 +61,7 @@ td:hover{background-color:#bfa145}
 </fieldset>
 </p>
 </section>	
+
+<div id='calendar'></div>
 
 
