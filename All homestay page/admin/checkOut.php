@@ -14,7 +14,7 @@
 include 'dbconnection.php';
 
 $userIC=$_POST['userIC'];
-$userName=$_POST['userName'];
+// $userName=$_POST['userName'];
 $status="Check Out";
 $room_type=$_POST['room_type'];
 
@@ -29,20 +29,20 @@ if($result1)
 {
 	if($room_type!='Regular')
 		{
-			echo"<script src='room1_checkOut.js'></script>";
-			echo"<script>alert('This user $userName  is check out from $room_type ')</script>";
+			// echo"<script src='room1_checkOut.js'></script>";
+			// echo"<script>alert('This user $userName  is check out from $room_type ')</script>";
 
-			header("refresh:2 url=checkOutReceipt.php?userIC=$userIC");
+			// header("refresh:2 url=checkOutReceipt.php?userIC=$userIC");
 		}
 
 	else
 		{ 
 
-			echo "<script src='room2_checkOut.js'></script>";
-			echo"<script>alert('This user $userName is check out from $room_type ')</script>";
+			// echo "<script src='room2_checkOut.js'></script>";
+			// echo"<script>alert('This user $userName is check out from $room_type ')</script>";
 
 		
-			header("refresh:2 url=checkOutReceipt.php?userIC=$userIC");
+			// header("refresh:2 url=checkOutReceipt.php?userIC=$userIC");
 		}
 
 }
@@ -51,19 +51,19 @@ else if($result2)
 {
 	if($room!='Regular')
 		{
-			echo"<script src='room1_checkOut.js'></script>";
-			echo"<script>alert('This user $userName is check out from $room ')</script>
-			";
+			// echo"<script src='room1_checkOut.js'></script>";
+			// echo"<script>alert('This user $userName is check out from $room ')</script>
+			// ";
 		
-			header("refresh:2 url=index_admin.php");
+			// header("refresh:2 url=index_admin.php");
 		}
 	else
 		{ 
-			echo"<script src='room2_checkOut.js'></script>";
-			echo"<script>alert('This user $userName is check out from $room ')</script>
-			";
+			// echo"<script src='room2_checkOut.js'></script>";
+			// echo"<script>alert('This user $userName is check out from $room ')</script>
+			// ";
 		
-			header("refresh:2 url=index_admin.php");
+			// header("refresh:2 url=index_admin.php");
 		}
 }
 

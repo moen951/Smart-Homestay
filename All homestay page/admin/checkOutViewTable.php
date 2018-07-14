@@ -5,6 +5,89 @@ include 'header_admin.php';
 
 ?>
 
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+
+<script type="text/javascript">
+	//initialize Firebase
+			var config = {
+		    apiKey: "AIzaSyCppORwD4pq5jkp_E176yCvh2SeG9QTs40",
+		    authDomain: "smart-homestay.firebaseapp.com",
+		    databaseURL: "https://smart-homestay.firebaseio.com",
+		    projectId: "smart-homestay",
+		    storageBucket: "smart-homestay.appspot.com",
+		    messagingSenderId: "747776544912"
+		  };
+		  firebase.initializeApp(config);
+		  var ref = firebase.app().database().ref('House');
+</script>
+
+<script type="text/javascript">
+	function checkOut() 
+	{
+	var userIC = document.getElementById("userIC").value;
+	var firstName = document.getElementById("firstName").value;
+	var lastName = document.getElementById("lastName").value;
+	var room_type = document.getElementById("room_type").value;
+	
+	// Returns successful data submission message when the entered information is stored in database.
+	var dataString = 'userIC=' + userIC  + '&firstName=' + firstName + '&lastName=' + lastName + '&room_type=' + room_type;
+
+	// window.alert(firstName+" "+lastName);
+	
+if(room_type!='Regular')
+		{
+			var roomRef1 = ref.child('Room1');
+
+			roomRef1.update({
+			 '/status1': false,
+
+			 
+			})
+			.catch(function (err) {
+			 console.log('one of these updates failed', err);
+			});
+		}
+
+else
+		{ 
+			var roomRef2 = ref.child('Room2');
+
+			roomRef2.update({
+			 '/status2': false,
+
+			 
+			})
+			.catch(function (err) {
+			 console.log('one of these updates failed', err);
+			});
+		}
+
+
+		// AJAX code to submit form.
+		$.ajax({
+		type: "POST",
+		url: "checkOut.php",
+		data: dataString,
+		cache: false,
+		success: function(data) {
+
+		var userName = firstName+" "+lastName;
+
+		window.location.href='index_admin.php';
+
+		alert("This user " + userName + " is check out from " + room_type);
+
+
+		//alert("Your reservation has been place");
+
+		return false;
+		}
+		});
+
+		return false;
+	}
+</script>
+
 <style type="text/css">
 table {
     margin:5px auto; width:50%
@@ -79,9 +162,9 @@ $sql1 = mysqli_query($conn,'SELECT  g.*, b.* FROM  guests g , booking b WHERE st
 
 $sql2 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE status = "'.$status.'" AND  b.guestIC=p.userIC AND p.userIC="'.$userIC.'"');
 
-$sql3 = mysqli_query($conn,'SELECT  g.*, b.* FROM  guests g , booking b WHERE status = "'.$status.'" AND  b.guestIC=g.guestIC AND g.guestIC="'.$userIC.'"');
+// $sql3 = mysqli_query($conn,'SELECT  g.*, b.* FROM  guests g , booking b WHERE status = "'.$status.'" AND  b.guestIC=g.guestIC AND g.guestIC="'.$userIC.'"');
 
-$sql4 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE status = "'.$status.'" AND  b.guestIC=p.userIC AND p.userIC="'.$userIC.'"');
+// $sql4 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE status = "'.$status.'" AND  b.guestIC=p.userIC AND p.userIC="'.$userIC.'"');
 
 
 
@@ -93,7 +176,7 @@ $sql4 = mysqli_query($conn,'SELECT p.* , b.* FROM profile p , booking b WHERE st
 
 if($sql1->num_rows)
 {
-echo"<form  action='checkOut.php' method='POST'>
+echo"<form >
 				<table width=auto height='209' border='1'>
   				<tr>
   				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
@@ -117,6 +200,9 @@ echo"<form  action='checkOut.php' method='POST'>
 		$email = $row['email'];
 		$date = 'From '.$row['startDate'].' until '.$row['endDate'];
 		$room_type=$row['room_type'];
+
+		$firstName  = $row['firstName'];
+		$lastName = $row['lastName'];
 		
 			echo"
     			<tr>
@@ -129,12 +215,14 @@ echo"<form  action='checkOut.php' method='POST'>
 				<td>$room_type</td>
    				
 				<td align='center'>
-				<input type='hidden' name='userName' value=$fname>
-				<input type='hidden' name='userIC' value=$icno>
-				<input type='hidden' name='room_type' value=$room_type>		
+
+				<input type='hidden' id='userIC' value=$icno>
+				<input type='hidden' id='firstName' value=$firstName>
+				<input type='hidden' id='lastName' value=$lastName>
+				<input type='hidden' id='room_type' value=$room_type>		
 	            	
 		       	            
-		            <br><br><input type='submit' class='btn btn-default' value='Check Out'>
+		            <br><br><input type='submit' class='btn btn-default' onclick='checkOut()' value='Check Out'>
 				
 							
 				</td>
@@ -149,7 +237,7 @@ echo"<form  action='checkOut.php' method='POST'>
 
 	else if($sql2->num_rows)
 		{
-		echo"<form  action='checkOut.php' method='POST'>
+		echo"<form >
 						<table width='auto' height='209' border='1'>
 		  				<tr>
 		  				<th  align='center'>IDENTITY CARD NUMBER(NRIC)</th>
@@ -174,7 +262,8 @@ echo"<form  action='checkOut.php' method='POST'>
 				$date = 'From '.$row['startDate'].' until '.$row['endDate'];
 				$room_type=$row['room_type'];
 
-
+				$firstName  = $row['firstName'];
+				$lastName = $row['lastName'];
 
 				
 					echo"
@@ -190,12 +279,14 @@ echo"<form  action='checkOut.php' method='POST'>
 		   				
 		   				
 						<td align='center'>
-						<input type='hidden' name='userName' value=$fname>
-						<input type='hidden' name='userIC' value=$icno>
-						<input type='hidden' name='room_type' value=$room_type>
+
+						<input type='hidden' id='userIC' value=$icno>
+						<input type='hidden' id='firstName' value=$firstName>
+						<input type='hidden' id='lastName' value=$lastName>
+						<input type='hidden' id='room_type' value=$room_type>
 				            
 				            
-				            <br><br><input type='submit' class='btn btn-default' value='Check Out'>
+				            <br><br><input type='submit' class='btn btn-default' onclick='checkOut()' value='Check Out'>
 						
 						</td>
 						</tr>";

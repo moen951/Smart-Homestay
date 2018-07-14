@@ -83,14 +83,7 @@ else
 		}
 		});
 
-	
-		
-
-		
-
-		
-	
-	return false;
+		return false;
 	}
 </script>
 
@@ -246,8 +239,6 @@ if($sql1->num_rows)
 				</tr>";
 		}
 
-
-		
 			
 		}
 				"</table>
