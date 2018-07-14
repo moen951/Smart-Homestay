@@ -14,7 +14,7 @@
 include 'dbconnection.php';
 
 $userIC=$_POST['userIC'];
-$userName=$_POST['userName'];
+// $userName=$_POST['userName'];
 $room_type=$_POST['room_type'];
 
 $update1= "UPDATE booking set status='Check In' WHERE guestIC='".$userIC."'";

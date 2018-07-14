@@ -106,6 +106,9 @@ if($sql1->num_rows)
 		$room_type=$row['room_type'];
 		$current_status=$row['status'];
 
+		$firstName  = $row['firstName'];
+		$lastName = $row['lastName'];
+
 		if($current_status!="Reserve")
 		{
 			echo "<script>
@@ -145,7 +148,8 @@ if($sql1->num_rows)
    				
 				<td align='center'>
 				<input type='hidden' id='userIC' value=$icno >
-				<input type='hidden' id='userName' value=$fname>
+				<input type='hidden' id='firstName' value=$firstName>
+				<input type='hidden' id='lastName' value=$lastName>
 				<input type='hidden' id='room_type' value=$room_type>
 
 		            <br><br><input type='submit' class='btn btn-default' onclick='checkIn()' value='Check In'>
@@ -180,6 +184,10 @@ if($sql1->num_rows)
 				$num_of_person=$row['num_of_person'];
 				$room_type=$row['room_type'];
 				$current_status=$row['status'];
+
+				$firstName  = $row['firstName'];
+				$lastName = $row['lastName'];
+
 
 				if($current_status!="Reserve")
 					{
@@ -225,7 +233,8 @@ if($sql1->num_rows)
 						<td align='center'>
 
 						<input type='hidden' id='userIC' value=$icno>
-						<input type='hidden' id='userName' value=$fname>
+						<input type='hidden' id='firstName' value=$firstName>
+						<input type='hidden' id='lastName' value=$lastName>
 						<input type='hidden' id='room_type' value=$room_type>
 				            
 				            
