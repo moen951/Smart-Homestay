@@ -306,7 +306,7 @@ else
               <!--
                 <button class="btn btn-default" >Submit</button>
               -->
-              <input  class="btn btn-default" id="submit" onclick="bookingGuest()" type="button" value="Submit">
+              <input  class="btn btn-default" id="submit" onclick="bookingGuest()" type="button" value="Reserve">
           </form>    
       </div>
       </div>  

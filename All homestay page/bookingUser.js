@@ -33,6 +33,8 @@ function bookingUser() {
 		data: dataString,
 		cache: false,
 		success: function(html) {
+
+		window.location.href='index.php';
 		alert("Your reservation has been place");
 		}
 		});
