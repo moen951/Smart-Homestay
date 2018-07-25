@@ -82,7 +82,7 @@ function walkIn_form() {
 
 		var userName = firstName+" "+lastName;
 
-		window.location.href='index_admin.php';
+		// window.location.href='index_admin.php';
 
 		alert("This user " + userName + " room is set to " + room_type);
 
