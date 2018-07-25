@@ -31,9 +31,9 @@ include 'header_admin.php';
 	// Returns successful data submission message when the entered information is stored in database.
 	var dataString = 'userIC=' + userIC  + '&firstName=' + firstName + '&lastName=' + lastName + '&room_type=' + room_type;
 
-	// window.alert(firstName+" "+lastName);
+	 // window.alert(room_type);
 	
-if(room_type!='Regular')
+if(room_type != 'Regular')
 		{
 			var roomRef1 = ref.child('Room1');
 
@@ -47,7 +47,7 @@ if(room_type!='Regular')
 			});
 		}
 
-else
+else 
 		{ 
 			var roomRef2 = ref.child('Room2');
 
@@ -62,6 +62,8 @@ else
 		}
 
 
+
+
 		// AJAX code to submit form.
 		$.ajax({
 		type: "POST",
@@ -72,7 +74,7 @@ else
 
 		var userName = firstName+" "+lastName;
 
-		window.location.href='index_admin.php';
+		// window.location.href='index_admin.php';
 
 		alert("This user " + userName + " room is set to " + room_type);
 
@@ -260,6 +262,7 @@ if($sql1->num_rows)
 				$email = $row['email'];
 				$date = 'From '.$row['startDate'].' until '.$row['endDate'];
 				$num_of_person=$row['num_of_person'];
+
 				$room_type=$row['room_type'];
 				$current_status=$row['status'];
 

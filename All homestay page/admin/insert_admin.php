@@ -37,20 +37,20 @@ $status=$_POST['status'];
 					VALUES ('$startDate', '$endDate')";
 					$result3 = $conn->query($sql3);
 
-					if($room_type!='Regular')
-						{
-							echo "<script src='room1_checkIn.js'></script>";
-							echo"<script>alert('This user $userName room is set to $room_type ')</script>";
+					// if($room_type!='Regular')
+					// 	{
+					// 		echo "<script src='room1_checkIn.js'></script>";
+					// 		echo"<script>alert('This user $userName room is set to $room_type ')</script>";
 
-							header("refresh:2 url=index_admin.php");
-						}
+					// 		header("refresh:2 url=index_admin.php");
+					// 	}
 
-					else
-						{ 
-							echo"<script>alert('This user $userName room is set to $room_type ')</script>
-							<script src='room2_checkIn.js'></script>";
-							header("refresh:2 url=index_admin.php");
-						}
+					// else
+					// 	{ 
+					// 		echo"<script>alert('This user $userName room is set to $room_type ')</script>
+					// 		<script src='room2_checkIn.js'></script>";
+					// 		header("refresh:2 url=index_admin.php");
+					// 	}
 
 
 			// header("refresh:0 url=index.php");
