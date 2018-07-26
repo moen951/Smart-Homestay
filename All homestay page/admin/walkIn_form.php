@@ -49,14 +49,17 @@
     });
     </script>
 
-
+    <style type="text/css">
+      
+      .error {color: #FF0000;}
+    </style>
      
 
       <div class="col-sm-5 col-md-4">
       <h3 align="center">Register Form</h3>
           <form role="form" class="wowload fadeInRight" >
 
-            
+            <p><span class="error">* required field</span></p>
             <div class="form-group" >
                   <div class="row">
                          
@@ -69,28 +72,34 @@
                   </select>
                   </div></div>
               </div>
-            <div class="form-group">
+            <div class="form-group"> <span class="error">*</span>
                   <input type="text" class="form-control"  placeholder="Identity Card Number(NRIC) " name="guestIC" id="guestIC" required>
+                 
               </div>
-              <div class="form-group">
+              <div class="form-group"><span class="error">*</span>
                   <input type="text" class="form-control"  placeholder="First Name" name="firstName" id="firstName" required>
+                  
               </div>
-              <div class="form-group">
+              <div class="form-group"><span class="error">*</span>
                   <input type="text" class="form-control"  placeholder="Last Name" name="lastName" id="lastName" required>
+                  
               </div>
-              <div class="form-group">
+              <div class="form-group"><span class="error">*</span>
                   <input type="text" class="form-control"  placeholder="Address" name="address" id="address" required>
+                  
               </div>
-              <div class="form-group">
+              <div class="form-group"><span class="error">*</span>
                   <input type="text" class="form-control"  placeholder="Postcode" name="postcode" id="postcode" required>
+                  
               </div>
-              <div class="form-group">
+              <div class="form-group"><span class="error">*</span>
                   <input type="text" class="form-control"  placeholder="City" name="city" id="city" required>
+                  
               </div>
               <div class="form-group">
                   <div class="row">
                          
-                  <div class="col-xs-6">
+                  <div class="col-xs-6"><span class="error">*</span>
                   <select id="region" class="form-control" >
                     <option id="please_select">Select Region</option>
                    <option id="wm">West Malaysia</option>
@@ -107,13 +116,15 @@
               </div> -->
               <div class="form-group">
                   <input type="Phone" class="form-control"  placeholder="Phone" name="phoneNum" id="phoneNum" required>
+                  <span class="error">*</span>
               </div>        
 
               <div class="form-group">
                   <div class="row">
                         
-                  <div class="col-xs-6">
+                  <div class="col-xs-6"><span class="error">*</span>
                   <select class="form-control" name="num_of_person" id="num_of_person" required>
+                    
                     <option>No. of Adult</option>
                     <option>1</option>
                     <option>2</option>
@@ -127,7 +138,7 @@
               <div class="form-group">
                   <div class="row">
                         
-                  <div class="col-xs-6">
+                  <div class="col-xs-6"><span class="error">*</span>
                   <select class="form-control" name="room" id="room" required>
                     <option>Room Type</option>
                     <option>Deluxe</option>
@@ -139,13 +150,13 @@
               <div class="form-group">
                   <div class="row">
                     <div class="col-xs-6">
-                      <b>Start Date</b>
+                      <b>Start Date</b><span class="error">*</span>
                     <input type='date' name='startDate' id='startDate' style='width: 160px; height: 30px' >
                     <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('startDate')[0].setAttribute('min', today);</script>
                   </div>
                  <b>    </b><b>     </b>
                   <div class="col-xs-6">
-                     <b>End Date</b>
+                     <b>End Date</b><span class="error">*</span>
                     <input type='date' name='endDate' id='endDate' style='width: 160px; height: 30px' >
                     <script>var today = new Date().toISOString().split('T')[0]; document.getElementsByName('endDate')[0].setAttribute('min', today);</script>
                   </div>
