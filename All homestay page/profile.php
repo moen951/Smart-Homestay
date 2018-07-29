@@ -71,22 +71,10 @@ if($sql1->num_rows)
     <div class='row'>
 
     <div class='col-sm-5 col-md-4'>
+    <h3>Profile</h3>
 
         <form role='form' class='wowload fadeInRight' action= 'profile_update.php' method='POST' >
 
-
-          <div class='form-group'>
-                <div class='row'>
-                       
-                <div class='col-xs-6'>
-                <select class='form-control' name='title'>
-                  <option>Title</option>
-                  <option>Mr.</option>
-                  <option>Mrs.</option>
-                  <option>Ms.</option>
-                </select>
-                </div></div>
-            </div>
           <div class='form-group'>
                 <input type='text' class='form-control'  placeholder='Identity Card Number(NRIC) ' name='userIC' value= '".$userIC."' required>
             </div>
@@ -146,16 +134,16 @@ else{
 
 ?>
 
-  <div id="information" class="spacer reserve-info ">
+<div id="information" class="spacer reserve-info ">
 <div class="container">
 <div class="row">
 
 <div class="col-sm-5 col-md-4">
-
+<h3>Profile</h3>
     <form role="form" class="wowload fadeInRight" action= "profile_insert.php" method="POST" >
 
 
-      <div class="form-group">
+     <!--  <div class="form-group">
             <div class="row">
                    
             <div class="col-xs-6">
@@ -166,7 +154,7 @@ else{
               <option>Ms.</option>
             </select>
             </div></div>
-        </div>
+        </div> -->
       <div class="form-group">
             <input type="text" class="form-control"  placeholder="Identity Card Number(NRIC) " name="userIC" value=<?php echo'"'.$_SESSION['userIC'].'"'; ?> required>
         </div>

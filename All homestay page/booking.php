@@ -83,7 +83,7 @@ if(isset($_SESSION['userIC']))
           <div class='row'>
 
           <div class='col-sm-5 col-md-4'>
-
+          <h3>Reservation</h3>
           <p><span class='error'>* required field</span></p>
 
               <form role='form' class='wowload fadeInRight' >
