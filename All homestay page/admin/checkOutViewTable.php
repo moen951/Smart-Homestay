@@ -40,12 +40,12 @@ if(room_type!='Regular')
 
 			roomRef1.update({
 			 '/status1': false,
-
-			 
 			})
 			.catch(function (err) {
 			 console.log('one of these updates failed', err);
 			});
+
+			checkOutDatabase();
 		}
 
 else
@@ -53,17 +53,17 @@ else
 			var roomRef2 = ref.child('Room2');
 
 			roomRef2.update({
-			 '/status2': false,
-
-			 
+			 '/status2': false, 
 			})
 			.catch(function (err) {
 			 console.log('one of these updates failed', err);
 			});
+
+			checkOutDatabase();
 		}
 
-
-		// AJAX code to submit form.
+function checkOutDatabase(){
+// AJAX code to submit form.
 		$.ajax({
 		type: "POST",
 		url: "checkOut.php",
@@ -73,7 +73,7 @@ else
 
 		var userName = firstName+" "+lastName;
 
-		window.location.href='index_admin.php';
+		window.location.href='checkOutReceipt_All.php';
 
 		alert("This user " + userName + " is check out from " + room_type);
 
@@ -83,6 +83,8 @@ else
 		return false;
 		}
 		});
+	}
+		
 
 		return false;
 	}

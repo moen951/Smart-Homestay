@@ -39,12 +39,14 @@ if(room_type != 'Regular')
 
 			roomRef1.update({
 			 '/status1': true,
-
-			 
 			})
 			.catch(function (err) {
 			 console.log('one of these updates failed', err);
 			});
+
+			checkInDatabase();
+
+			
 		}
 
 else 
@@ -52,19 +54,20 @@ else
 			var roomRef2 = ref.child('Room2');
 
 			roomRef2.update({
-			 '/status2': true,
-
-			 
+			 '/status2': true,	 
 			})
 			.catch(function (err) {
 			 console.log('one of these updates failed', err);
 			});
+
+			checkInDatabase();
+
+
 		}
 
 
-
-
-		// AJAX code to submit form.
+function checkInDatabase(){
+// AJAX code to submit form.
 		$.ajax({
 		type: "POST",
 		url: "checkIn.php",
@@ -74,7 +77,7 @@ else
 
 		var userName = firstName+" "+lastName;
 
-		// window.location.href='index_admin.php';
+		window.location.href='index_admin.php';
 
 		alert("This user " + userName + " room is set to " + room_type);
 
@@ -84,6 +87,10 @@ else
 		return false;
 		}
 		});
+
+	}
+
+		
 
 		return false;
 	}
