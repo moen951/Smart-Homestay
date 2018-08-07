@@ -55,6 +55,8 @@ function walkIn_form() {
 					.catch(function (err) {
 					 console.log('one of these updates failed', err);
 					});
+
+					walkIn_Data();
 				}
 
 		else
@@ -69,26 +71,36 @@ function walkIn_form() {
 					.catch(function (err) {
 					 console.log('one of these updates failed', err);
 					});
+
+					walkIn_Data();
 				}
 
 
-		// AJAX code to submit form.
-		$.ajax({
-		type: "POST",
-		url: "insert_admin.php",
-		data: dataString,
-		cache: false,
-		success: function(html) {
+				function walkIn_Data()
+				{
 
-		var userName = firstName+" "+lastName;
+				// AJAX code to submit form.
+						$.ajax({
+						type: "POST",
+						url: "insert_admin.php",
+						data: dataString,
+						cache: false,
+						success: function(html) {
 
-		// window.location.href='index_admin.php';
+						var userName = firstName+" "+lastName;
 
-		alert("This user " + userName + " room is set to " + room_type);
+						window.location.href='index_admin.php';
 
-		return false;
-		}
-		});
+						alert("This user " + userName + " room is set to " + room_type);
+
+						return false;
+						}
+						});
+
+
+				}
+
+		
 
 	}
 	return false;
