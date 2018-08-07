@@ -73,7 +73,7 @@ function checkOutDatabase(){
 
 		var userName = firstName+" "+lastName;
 
-		window.location.href='checkOutReceipt_All.php';
+		window.location.assign('index_admin.php');
 
 		alert("This user " + userName + " is check out from " + room_type);
 
