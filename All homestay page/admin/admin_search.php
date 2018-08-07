@@ -131,7 +131,7 @@ else
 <form method="POST" action="admin_search.php">
 <tr>
 <td>
-<b>Identity Card Number(NRIC):</b><input type="text" name="userIC" style="width:150px;height:20px" required ><br>
+<b>Identity Card Number(NRIC):</b><input type="text" name="userIC" style="width:150px;height:20px" required><br>
 <!--<br><h3>OR</h3>
 <b>Guest Identity Card Number(NRIC):</b><input type="text" name="guestIC" style="width:150px;height:20px"  ><br>
 </td>
