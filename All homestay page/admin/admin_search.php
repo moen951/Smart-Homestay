@@ -44,6 +44,7 @@ if(room_type != 'Regular')
 			 console.log('one of these updates failed', err);
 			});
 
+
 			checkInDatabase();
 
 			
@@ -59,6 +60,7 @@ else
 			.catch(function (err) {
 			 console.log('one of these updates failed', err);
 			});
+
 
 			checkInDatabase();
 
