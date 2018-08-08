@@ -26,37 +26,37 @@ $result2 = $conn->query($update2);
 
 if($result1)
 {
-	if($room_type!='Regular')
-		{
-			// echo "<script src='room1_checkIn.js'></script>";
-			//echo"<script>alert('This user $userName room is set to $room_type ')</script>";
+	// if($room_type!='Regular')
+	// 	{
+	// 		// echo "<script src='room1_checkIn.js'></script>";
+	// 		//echo"<script>alert('This user $userName room is set to $room_type ')</script>";
 
-			//header("refresh:1 url=index_admin.php");
-		}
+	// 		//header("refresh:1 url=index_admin.php");
+	// 	}
 
-	else
-		{ 
-			//echo"<script>alert('This user $userName room is set to $room_type ')</script>"
-			// echo"<script src='room2_checkIn.js'></script>";
-			//header("refresh:1 url=index_admin.php");
-		}
+	// else
+	// 	{ 
+	// 		//echo"<script>alert('This user $userName room is set to $room_type ')</script>"
+	// 		// echo"<script src='room2_checkIn.js'></script>";
+	// 		//header("refresh:1 url=index_admin.php");
+	// 	}
 
 }
 
 else if($result2)
 {
-	if($room_type!='Regular')
-		{
-			// echo "<script src='room1_checkIn.js'></script>";
-			//echo"<script>alert('This user $userName room is set to $room_type ')</script>";
-			//header("refresh:1 url=index_admin.php");
-		}
-	else
-		{ 
-			// echo "<script src='room2_checkIn.js'></script>";	
-			//echo"<script>alert('This user $userName room is set to $room_type ')</script>";
-			//header("refresh:1 url=index_admin.php");
-		}
+	// if($room_type!='Regular')
+	// 	{
+	// 		// echo "<script src='room1_checkIn.js'></script>";
+	// 		//echo"<script>alert('This user $userName room is set to $room_type ')</script>";
+	// 		//header("refresh:1 url=index_admin.php");
+	// 	}
+	// else
+	// 	{ 
+	// 		// echo "<script src='room2_checkIn.js'></script>";	
+	// 		//echo"<script>alert('This user $userName room is set to $room_type ')</script>";
+	// 		//header("refresh:1 url=index_admin.php");
+	// 	}
 }
 
 else
